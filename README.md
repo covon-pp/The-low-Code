@@ -1,5 +1,5 @@
 # the-low-code
-
+#这是一个简易的低代码平台，目前还在开发状态
 This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup
