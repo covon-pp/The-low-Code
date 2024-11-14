@@ -26,6 +26,11 @@
 .dragging-not-allowed {
   cursor: no-drop; /* 禁止放置图标 */
 }
+.ghost {
+  opacity: 0.5;
+  background-color: #c8ebfb;
+  // background: #c8ebfb;
+}
 /*工具栏*/
 .toolbar {
   padding: 0 18px;
@@ -88,13 +93,13 @@
     height: 32px;
   }
   &-main {
-    height: 396px;
+    height: 356px;
     &__datas {
       column-gap: 24px;
       row-gap: 24px;
     }
     &__subassembly {
-      padding: 6px 0;
+      padding: 8px 0;
       border-bottom: 1px solid #ebeef5;
     }
     &__icon {
@@ -115,6 +120,15 @@
     min-height: 100%;
     width: 1200px;
     height: 900px;
+    &__tip {
+      top: 42%;
+      left: 42%;
+    }
+    &__content {
+      display: block;
+      width: 1200px;
+      height: 900px;
+    }
   }
 }
 
@@ -125,5 +139,8 @@
       cursor: pointer;
       padding: 0 6px;
     }
+  }
+  &-body {
+    height: calc(100% - 32px);
   }
 }

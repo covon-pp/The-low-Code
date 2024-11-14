@@ -1,5 +1,5 @@
 <template>
-  <div class="fittings h-3/4" bbc>
+  <div class="fittings h-4/6" bbc>
     <div class="fittings-header" text-center font-light text-xl bbc>
       <span>组件库</span>
     </div>
@@ -13,22 +13,23 @@
             </svg>
           </div>
         </div>
-
-        <div class="fittings-main__datas overflow-hidden grid grid-cols-3" v-if="!arrowhead[index].isFold">
-          <draggable ghost-class="ghost" itemKey="id" @mousedown.prevent :list="data.categorydata"
-            :force-fallback="true" :group="{ name: 'list', pull: 'clone', put: false }" :sort="false"
-            class="draggable-root-div" @start="onStart" @update="onUpdate" @end="onEnd">
-            <template #item="{ element }">
-              <div class="fittings-main__data flex flex-col items-center cursor-move">
-                <div class="fittings-main__icon w-12 h-12 rounded flex items-center justify-center">
+        <div class="fittings-main__datas overflow-hidden grid grid-cols-3 justify-items-center"
+          v-if="!arrowhead[index].isFold">
+          <VueDraggable ref="el" v-model="data.categorydata" ghostClass="ghost" :animation="150"
+            class="draggable-root-div" :group="{ name: 'component', pull: 'clone', put: false }" :clone="clone"
+            :sort="false" @end="onEnd">
+            <div class="fittings-main__data" :key="index" v-for="(ele, index) in data.categorydata"
+              :data-type="ele.component">
+              <div class="flex flex-col items-center w-16">
+                <div class="fittings-main__icon w-12 h-12 rounded flex items-center justify-center cursor-move">
                   <svg class="icon" aria-hidden="true" w-5 h-5>
-                    <use :xlink:href='element.icon'></use>
+                    <use :xlink:href='ele.icon'></use>
                   </svg>
                 </div>
-                <div class="fittings-main__msg pt-1">{{ element.label }}</div>
+                <div class="fittings-main__msg pt-1 cursor-move">{{ ele.label }}</div>
               </div>
-            </template>
-          </draggable>
+            </div>
+          </VueDraggable>
         </div>
       </div>
     </div>
@@ -36,23 +37,63 @@
 </template>
 
 <script setup lang="ts">
-import { list } from './ComponentList'
-import draggable from 'vuedraggable'
+import { list, type Style } from './ComponentList'
+import { type DraggableEvent, type UseDraggableReturn, VueDraggable } from 'vue-draggable-plus'
+import { cloneId } from '@/stores/canvasData';
 const reactiveList = reactive(list)
+const el = ref<UseDraggableReturn>()
 type Arr = {
   index: number, isFold: boolean, rotate: string, height: string
 }
-const onStart = (e: DraggableEvent) => {
-  console.log('start', e)
+// const onStart = (e: DraggableEvent) => {
+//   console.log('start', e.data)
+// }
+
+// const onEnd = (evt: DraggableEvent) => {
+// console.log(e.data.component);
+// console.log('onEnd', e.data)
+// const draggedItem = evt.item;
+// const itemType = draggedItem.dataset.type;
+// console.log(itemType);
+// emitter.emit('item-dragged', itemType);
+// }
+
+
+// const onUpdate = (e: DraggableEvent) => {
+//   console.log('update---' + e)
+// }
+
+// function clone(element: Record<'component' | 'id', string>) {
+//   const len = clonedComponents.value?.length
+//   console.log({
+//     name: `${element.component}-clone-${len}`,
+//     id: `${element.id}-clone-${len}`
+//   });
+
+//   return {
+//     // data: `<${element.component}>data</${element.component}>`
+//     component: ref(ButtonComponent),
+//     name: `${element.component}-clone-${len}`,
+//     id: `${element.id}-clone-${len}`
+//   }
+// }
+type Categorydata = {
+  id: string;
+  component: ReturnType<typeof markRaw>;
+  label: string;
+  propValue: object | string;
+  icon: string;
+  style: Style;
+}
+// const clone = (originalItem: Categorydata) => ({ ...originalItem });
+//为克隆后的组件修改编号
+const clone = (originalItem: Categorydata) => {
+  const item = Object.assign({}, originalItem)
+  item.id = originalItem.id + '-clone-' + cloneId.value
+  cloneId.value++
+  return ({ ...item })
 }
 
-const onEnd = (e: DraggableEvent) => {
-  console.log('onEnd', e)
-}
-
-const onUpdate = () => {
-  console.log('update')
-}
 const arrowhead = ref<Arr[]>([
   {
     index: 0,
