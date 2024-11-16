@@ -7,6 +7,7 @@
 
 <script setup lang="ts">
 const { customStyle } = defineProps(['customStyle'])
+const { resize } = customStyle
 </script>
 
 <style scoped>
@@ -16,5 +17,6 @@ span {
 
 textarea {
   width: v-bind('customStyle.width');
+  resize: v-bind('resize');
 }
 </style>

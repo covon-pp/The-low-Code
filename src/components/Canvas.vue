@@ -7,7 +7,7 @@
         <div class="canvas-draw__tip absolute" v-if="clonedComponents?.length === 0">画布为空，可添加组件
         </div>
         <div v-show="clonedComponents.length > 0" v-for="(data, index) in clonedComponents" :key="index"
-          class="canvas-draw__data cursor-move" :class="{ 'border-class': selectedIndex === index }"
+          class="canvas-draw__data cursor-move" :class="{ 'border-class': selectedCom === index }"
           @click="toggleBorderBorder(index)">
           <component :is="data.component" :customStyle="data.style" />
         </div>
@@ -17,28 +17,24 @@
 </template>
 
 <script setup lang="ts">
-import emitter from '@/assets/utils/emitter';
 import { VueDraggable } from 'vue-draggable-plus'
 import { clonedComponents } from '@/stores/canvasData'
-function onUpdate() {
+import { selectedCom } from '@/stores/canvasData';
+function onUpdate(e) {
   console.log('update---')
+  selectedCom.value = e.newIndex
 }
 function onAdd(e) {
   console.log('add---')
   //新增组件添加边框
-  toggleBorderBorder(clonedComponents.value.length - 1)
-  emitter.emit('send-cloneData', e.clonedData)
-  // console.log(e.clonedData);
+  toggleBorderBorder(e.newIndex)
 }
 function remove() {
   console.log('remove---')
 }
-
 //点击添加边框
-const selectedIndex = ref<number>()
 const toggleBorderBorder = (index: number) => {
-  selectedIndex.value = index
-  emitter.emit('send-cloneData', clonedComponents.value[index])
+  selectedCom.value = index
 }
 </script>
 

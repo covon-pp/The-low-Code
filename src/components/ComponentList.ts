@@ -175,7 +175,7 @@ export const list: Listdata[] = [
         icon: '#icon-duohangshuru',
         propValue: '',
         style: {
-          width: '680px',
+          width: '660px',
           height: '32px',
           margin: '10px',
           resize: 'none',

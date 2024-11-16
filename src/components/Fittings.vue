@@ -17,7 +17,7 @@
           v-if="!arrowhead[index].isFold">
           <VueDraggable ref="el" v-model="data.categorydata" ghostClass="ghost" :animation="150"
             class="draggable-root-div" :group="{ name: 'component', pull: 'clone', put: false }" :clone="clone"
-            :sort="false" @end="onEnd">
+            :sort="false">
             <div class="fittings-main__data" :key="index" v-for="(ele, index) in data.categorydata"
               :data-type="ele.component">
               <div class="flex flex-col items-center w-16">
@@ -38,45 +38,13 @@
 
 <script setup lang="ts">
 import { list, type Style } from './ComponentList'
-import { type DraggableEvent, type UseDraggableReturn, VueDraggable } from 'vue-draggable-plus'
+import { type UseDraggableReturn, VueDraggable } from 'vue-draggable-plus'
 import { cloneId } from '@/stores/canvasData';
 const reactiveList = reactive(list)
 const el = ref<UseDraggableReturn>()
 type Arr = {
   index: number, isFold: boolean, rotate: string, height: string
 }
-// const onStart = (e: DraggableEvent) => {
-//   console.log('start', e.data)
-// }
-
-// const onEnd = (evt: DraggableEvent) => {
-// console.log(e.data.component);
-// console.log('onEnd', e.data)
-// const draggedItem = evt.item;
-// const itemType = draggedItem.dataset.type;
-// console.log(itemType);
-// emitter.emit('item-dragged', itemType);
-// }
-
-
-// const onUpdate = (e: DraggableEvent) => {
-//   console.log('update---' + e)
-// }
-
-// function clone(element: Record<'component' | 'id', string>) {
-//   const len = clonedComponents.value?.length
-//   console.log({
-//     name: `${element.component}-clone-${len}`,
-//     id: `${element.id}-clone-${len}`
-//   });
-
-//   return {
-//     // data: `<${element.component}>data</${element.component}>`
-//     component: ref(ButtonComponent),
-//     name: `${element.component}-clone-${len}`,
-//     id: `${element.id}-clone-${len}`
-//   }
-// }
 type Categorydata = {
   id: string;
   component: ReturnType<typeof markRaw>;

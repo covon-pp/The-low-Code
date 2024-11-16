@@ -4,45 +4,35 @@
       <div v-for="(data, index) in attribute" :key="index" @click="change(index)">{{ data }}</div>
     </div>
     <div class="control-body">
-      <controlType> {{ attr === undefined ? '请选择组件' : attr }} </controlType>
+      <controlType :type="type"></controlType>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import emitter from '@/assets/utils/emitter';
-import { type Categorydata, type Style } from '@/components/ComponentList';
-import { clonedComponents } from '@/stores/canvasData';
 import controlType from './Subassembly/controlType.vue';
-const { attribute } = defineProps<{
-  attribute: string[]
-}>()
+import Animation from '@/components/Subassembly/Animation.vue';
+import Event from '@/components/Subassembly/Event.vue';
+import Attr from '@/components/Subassembly/Attr.vue';
+const { attribute } = defineProps<{ attribute: string[] }>()
 const sliderLeft = ref<string>('24px')
+const type = shallowRef(Attr)
 const change = (index: number) => {
   switch (index) {
     case 0:
       sliderLeft.value = '24px'
+      type.value = Attr
       break;
     case 1:
       sliderLeft.value = '116px'
+      type.value = Animation
       break;
     case 2:
       sliderLeft.value = '208px'
+      type.value = Event
       break;
   }
 }
-const attr = ref<Style>()
-// const animation = ref()
-// const event = ref()
-emitter.on('send-cloneData', (data: Categorydata) => {
-  attr.value = data.style
-})
-emitter.on('clear-detail', () => {
-  attr.value = undefined
-})
-onUnmounted(() => {
-  emitter.all.clear()
-})
 </script>
 
 <style scoped lang="scss">

@@ -51,7 +51,7 @@ import Control from '@/components/Control.vue';
 const leftShow = ref<boolean>(true)
 const rightShow = ref<boolean>(true)
 const distance = ref({ left: '275px', right: '275px' })
-const attribute = ref<string[]>(['属性', '动画', '事件'])
+const attribute = markRaw<string[]>(['属性', '动画', '事件'])
 const closeList = (pos: string) => {
   if (pos === 'left') {
     leftShow.value = !leftShow.value

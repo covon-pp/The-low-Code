@@ -12,10 +12,10 @@
       <el-button>导入</el-button>
       <el-button @click="quash">撤销</el-button>
       <el-button>恢复</el-button>
-      <el-button>删除</el-button>
+      <el-button @click="delCom">删除</el-button>
       <el-button @click="clearAll">清空画布</el-button>
-      <el-button>上移一层</el-button>
-      <el-button>下移一层</el-button>
+      <el-button @click="moveUp(selectedCom)">上移一层</el-button>
+      <el-button @click="moveDown(selectedCom)">下移一层</el-button>
     </div>
     <div class="toolbar-save">
       <el-button>预览</el-button>
@@ -25,13 +25,12 @@
 </template>
 
 <script setup lang="ts">
-import emitter from '@/assets/utils/emitter';
-import { clonedComponents, cloneId } from '@/stores/canvasData'
+import { clonedComponents, cloneId, selectedCom, delCom, moveUp, moveDown } from '@/stores/canvasData'
 const christen = ref<string>('未命名标题')
 const clearAll = () => {
   clonedComponents.value = []
-  cloneId.value = 0
-  emitter.emit('clear-detail', {})
+  cloneId.value = 1
+  selectedCom.value = undefined
 }
 const quash = () => {
   // clonedComponents.value.pop(clonedComponents.value.length - 1)
