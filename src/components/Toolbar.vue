@@ -10,8 +10,8 @@
     </div>
     <div class="toolbar-btns" flex justify-center>
       <el-button>导入</el-button>
-      <el-button @click="quash">撤销</el-button>
-      <el-button>恢复</el-button>
+      <el-button @click="state.mutations.undo(state.state)">撤销</el-button>
+      <el-button @click="state.mutations.redo(state.state)">恢复</el-button>
       <el-button @click="delCom">删除</el-button>
       <el-button @click="clearAll">清空画布</el-button>
       <el-button @click="moveUp(selectedCom)">上移一层</el-button>
@@ -25,15 +25,15 @@
 </template>
 
 <script setup lang="ts">
-import { clonedComponents, cloneId, selectedCom, delCom, moveUp, moveDown } from '@/stores/canvasData'
+import { delCom, moveUp, moveDown } from '@/assets/hooks/useOpera';
+import { clonedComponents, cloneId, selectedCom } from '@/stores/canvasData'
+import state from '@/stores/snapshot'
 const christen = ref<string>('未命名标题')
 const clearAll = () => {
   clonedComponents.value = []
   cloneId.value = 1
   selectedCom.value = undefined
-}
-const quash = () => {
-  // clonedComponents.value.pop(clonedComponents.value.length - 1)
+  state.mutations.save(state.state)
 }
 </script>
 

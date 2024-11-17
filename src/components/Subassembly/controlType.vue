@@ -10,7 +10,7 @@
 import { type Categorydata } from '@/components/ComponentList';
 import { selectedCom, clonedComponents } from '@/stores/canvasData';
 const { type } = defineProps(['type'])
-const showData = shallowRef<Categorydata>()
+const showData = ref<Categorydata>()
 //监听选择的组件
 watchEffect(() => {
   showData.value = selectedCom.value != undefined ? clonedComponents.value[selectedCom.value] : undefined

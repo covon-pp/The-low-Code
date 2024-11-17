@@ -20,14 +20,17 @@
 import { VueDraggable } from 'vue-draggable-plus'
 import { clonedComponents } from '@/stores/canvasData'
 import { selectedCom } from '@/stores/canvasData';
+import state from '@/stores/snapshot'
 function onUpdate(e) {
   console.log('update---')
   selectedCom.value = e.newIndex
+  state.mutations.save(state.state)
 }
 function onAdd(e) {
   console.log('add---')
   //新增组件添加边框
   toggleBorderBorder(e.newIndex)
+  state.mutations.save(state.state)
 }
 function remove() {
   console.log('remove---')
@@ -36,6 +39,7 @@ function remove() {
 const toggleBorderBorder = (index: number) => {
   selectedCom.value = index
 }
+
 </script>
 
 <style scoped>

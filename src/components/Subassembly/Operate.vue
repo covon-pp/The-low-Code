@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import { delCom, moveUp, moveDown } from '@/stores/canvasData';
+import { delCom, moveUp, moveDown } from '@/assets/hooks/useOpera';
 const icons = ['#icon-shangyi', '#icon-xiayi', '#icon-shanchu']
 const { place } = defineProps(['place'])
 const moveEle = (index: number) => {
