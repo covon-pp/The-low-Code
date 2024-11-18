@@ -6,11 +6,11 @@
         @update="onUpdate" @add="onAdd" @remove="remove" :sort="true">
         <div class="canvas-draw__tip absolute" v-if="clonedComponents?.length === 0">画布为空，可添加组件
         </div>
-        <div v-show="clonedComponents.length > 0" v-for="(data, index) in clonedComponents" :key="index"
+        <!-- <div> -->
+        <component v-show="clonedComponents.length > 0" v-for="(data, index) in clonedComponents" :key="index"
           class="canvas-draw__data cursor-move" :class="{ 'border-class': selectedCom === index }"
-          @click="toggleBorderBorder(index)">
-          <component :is="data.component" :customStyle="data.style" />
-        </div>
+          @click="toggleBorderBorder(index)" :is="getComponent(data.component)" :customStyle="data.style" />
+        <!-- </div> -->
       </VueDraggable>
     </div>
   </div>
@@ -20,7 +20,9 @@
 import { VueDraggable } from 'vue-draggable-plus'
 import { clonedComponents } from '@/stores/canvasData'
 import { selectedCom } from '@/stores/canvasData';
+import { getComponent } from '@/components/ComponentList'
 import state from '@/stores/snapshot'
+
 function onUpdate(e) {
   console.log('update---')
   selectedCom.value = e.newIndex

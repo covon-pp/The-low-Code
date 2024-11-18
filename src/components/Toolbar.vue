@@ -1,19 +1,14 @@
 <template>
   <div class="toolbar" w-full whitespace-nowrap bbc flex justify-between items-center>
-    <div class="toolbar-christen flex align-center">
-      <div>{{ christen }}</div>
-      <button>
-        <svg class="icon" aria-hidden="true">
-          <use xlink:href='#icon-igw-l-edit'></use>
-        </svg>
-      </button>
+    <div class="toolbar-name">
+      <Rename :isRename="isRename" :changeName="changeName" :icon="icon"></Rename>
     </div>
     <div class="toolbar-btns" flex justify-center>
       <el-button>导入</el-button>
-      <el-button @click="state.mutations.undo(state.state)">撤销</el-button>
-      <el-button @click="state.mutations.redo(state.state)">恢复</el-button>
+      <el-button @click="state.mutations.undo(state.state)" :disabled="!state.state.isRedo.value">撤销</el-button>
+      <el-button @click="state.mutations.redo(state.state)" :disabled="!state.state.isUndo.value">恢复</el-button>
       <el-button @click="delCom">删除</el-button>
-      <el-button @click="clearAll">清空画布</el-button>
+      <el-button @click="clearAll" :disabled="clonedComponents.length === 0">清空画布</el-button>
       <el-button @click="moveUp(selectedCom)">上移一层</el-button>
       <el-button @click="moveDown(selectedCom)">下移一层</el-button>
     </div>
@@ -27,13 +22,24 @@
 <script setup lang="ts">
 import { delCom, moveUp, moveDown } from '@/assets/hooks/useOpera';
 import { clonedComponents, cloneId, selectedCom } from '@/stores/canvasData'
+import Rename from '@/components/Subassembly/Rename.vue';
 import state from '@/stores/snapshot'
-const christen = ref<string>('未命名标题')
+import { success } from '@/assets/hooks/useMessageTip';
+const isRename = ref<boolean>(true)
+const icon = ref<string>('#icon-igw-l-edit')
 const clearAll = () => {
   clonedComponents.value = []
   cloneId.value = 1
   selectedCom.value = undefined
   state.mutations.save(state.state)
+}
+const changeName = () => {
+  if (isRename.value) icon.value = '#icon-dagou'
+  else {
+    success('修改成功')
+    icon.value = '#icon-igw-l-edit'
+  }
+  isRename.value = !isRename.value
 }
 </script>
 

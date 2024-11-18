@@ -1,7 +1,5 @@
 <template>
-  <div :style="customStyle">
-    <el-rate v-model="value" :colors="colors" />
-  </div>
+  <el-rate v-model="value" :colors="colors" :style="customStyle" />
 </template>
 
 <script setup lang="ts">

@@ -1,14 +1,11 @@
 <template>
-  <div :style="customStyle">
-    <div class="image-placeholder">
-      <div class="image-placeholder__box w-full h-full flex justify-center justify-items-center flex-col items-center"
-        ref="upload">
-        <svg class=" icon w-6">
-          <use xlink:href='#icon-jia'></use>
-        </svg>
-        <span>点击上传图片</span>
-        <!-- <img :src="src"> -->
-      </div>
+  <div class="image-placeholder" :style="customStyle">
+    <div class="image-placeholder__box w-full h-full flex justify-center justify-items-center flex-col items-center"
+      ref="upload">
+      <svg class=" icon w-6">
+        <use xlink:href='#icon-jia'></use>
+      </svg>
+      <span>点击上传图片</span>
     </div>
   </div>
 </template>

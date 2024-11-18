@@ -1,8 +1,9 @@
 <template>
-  <div>
-    <slot>
+  <div class="control-body__attrs">
+    <keep-alive v-if="showData != undefined">
       <component :is=type :showData="showData"></component>
-    </slot>
+    </keep-alive>
+    <div v-else p-4>暂无选中组件，点击画布添加组件</div>
   </div>
 </template>
 

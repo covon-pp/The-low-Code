@@ -36,7 +36,7 @@ export type Style = {
 }
 export type Categorydata = {
   id: string
-  component: ReturnType<typeof markRaw>
+  component: string
   label: string
   propValue: object | string
   icon: string
@@ -54,7 +54,7 @@ export const list: Listdata[] = [
     categorydata: [
       {
         id: '1-1',
-        component: markRaw(Raster),
+        component: 'Raster',
         label: '栅格',
         propValue: '&nbsp;',
         icon: '#icon-zhagebuju',
@@ -72,7 +72,7 @@ export const list: Listdata[] = [
       },
       {
         id: '1-2',
-        component: markRaw(Table),
+        component: 'Table',
         label: '表格',
         icon: '#icon-biaoge',
         propValue: {
@@ -101,7 +101,7 @@ export const list: Listdata[] = [
     categorydata: [
       {
         id: '2-1',
-        component: markRaw(Text),
+        component: 'Text',
         label: '文字',
         icon: '#icon-text',
         propValue: '双击编辑文字',
@@ -119,19 +119,19 @@ export const list: Listdata[] = [
       },
       {
         id: '2-2',
-        component: markRaw(Picture),
+        component: 'Picture',
         label: '图片',
         icon: '#icon-tupian',
         propValue: '',
         style: {
           width: '300px',
-          height: 'auto',
+          height: '300px',
           borderRadius: '',
         },
       },
       {
         id: '2-3',
-        component: markRaw(Switch),
+        component: 'Switch',
         label: '开关',
         icon: '#icon-switch-ON',
         propValue: '',
@@ -144,13 +144,13 @@ export const list: Listdata[] = [
           letterSpacing: 0,
           textAlign: 'center',
           color: '',
-          borderColor: '#000',
+          borderColor: '#409eff',
           backgroundColor: 'rgba(255, 255, 255, 1)',
         },
       },
       {
         id: '2-4',
-        component: markRaw(SingleLineInput),
+        component: 'SingleLineInput',
         label: '单行输入',
         icon: '#icon-danhangshurukuang',
         propValue: '',
@@ -164,13 +164,13 @@ export const list: Listdata[] = [
           letterSpacing: 0,
           textAlign: 'center',
           color: '',
-          borderColor: '#000',
+          borderColor: '#409eff',
           backgroundColor: 'rgba(255, 255, 255, 1)',
         },
       },
       {
         id: '2-5',
-        component: markRaw(MultiLineInput),
+        component: 'MultiLineInput',
         label: '多行输入',
         icon: '#icon-duohangshuru',
         propValue: '',
@@ -185,13 +185,13 @@ export const list: Listdata[] = [
           letterSpacing: 0,
           textAlign: 'start',
           color: '',
-          borderColor: '#000',
+          borderColor: '#409eff',
           backgroundColor: 'rgba(255, 255, 255, 1)',
         },
       },
       {
         id: '2-6',
-        component: markRaw(DropDown),
+        component: 'DropDown',
         label: '下拉框',
         icon: '#icon-m-xialaxuanxiang',
         propValue: '',
@@ -204,13 +204,13 @@ export const list: Listdata[] = [
           letterSpacing: 0,
           textAlign: 'center',
           color: '',
-          borderColor: '#000',
+          borderColor: '#409eff',
           backgroundColor: 'rgba(255, 255, 255, 1)',
         },
       },
       {
         id: '2-7',
-        component: markRaw(RadioBox),
+        component: 'RadioBox',
         label: '单选框',
         icon: '#icon-danxuanxuanzhong',
         propValue: '',
@@ -223,13 +223,13 @@ export const list: Listdata[] = [
           letterSpacing: 0,
           textAlign: 'center',
           color: '',
-          borderColor: '#000',
+          borderColor: '#409eff',
           backgroundColor: 'rgba(255, 255, 255, 1)',
         },
       },
       {
         id: '2-8',
-        component: markRaw(MultiCheckBox),
+        component: 'MultiCheckBox',
         label: '多选框',
         icon: '#icon-duoxuankuang',
         propValue: '',
@@ -242,13 +242,13 @@ export const list: Listdata[] = [
           letterSpacing: 0,
           textAlign: 'center',
           color: '',
-          borderColor: '#000',
+          borderColor: '#409eff',
           backgroundColor: 'rgba(255, 255, 255, 1)',
         },
       },
       {
         id: '2-9',
-        component: markRaw(Grade),
+        component: 'Grade',
         label: '打分',
         icon: '#icon-dafen',
         propValue: '',
@@ -261,13 +261,13 @@ export const list: Listdata[] = [
           letterSpacing: 0,
           textAlign: 'center',
           color: '',
-          borderColor: '#000',
+          borderColor: '#409eff',
           backgroundColor: 'rgba(255, 255, 255, 1)',
         },
       },
       {
         id: '2-10',
-        component: markRaw(ButtonComponent),
+        component: 'ButtonComponent',
         label: '按钮',
         propValue: '按钮',
         icon: '#icon-anniu',
@@ -295,7 +295,7 @@ export const list: Listdata[] = [
     categorydata: [
       {
         id: '3-1',
-        component: markRaw(RectShape),
+        component: 'RectShape',
         label: '矩形',
         propValue: '&nbsp;',
         icon: 'juxing',
@@ -308,7 +308,7 @@ export const list: Listdata[] = [
           letterSpacing: 0,
           textAlign: 'center',
           color: '',
-          borderColor: '#000',
+          borderColor: '#409eff',
           borderWidth: 1,
           backgroundColor: '',
           borderStyle: 'solid',
@@ -318,7 +318,7 @@ export const list: Listdata[] = [
       },
       {
         id: '3-2',
-        component: markRaw(LineShape),
+        component: 'LineShape',
         label: '直线',
         propValue: '',
         icon: 'zhixian',
@@ -330,7 +330,7 @@ export const list: Listdata[] = [
       },
       {
         id: '3-2',
-        component: markRaw(CircleShape),
+        component: 'CircleShape',
         label: '圆形',
         propValue: '&nbsp;',
         icon: '24gl-circle',
@@ -343,7 +343,7 @@ export const list: Listdata[] = [
           letterSpacing: 0,
           textAlign: 'center',
           color: '',
-          borderColor: '#000',
+          borderColor: '#409eff',
           borderWidth: 1,
           backgroundColor: '',
           borderStyle: 'solid',
@@ -353,7 +353,7 @@ export const list: Listdata[] = [
       },
       {
         id: '3-3',
-        component: markRaw(SVGStar),
+        component: 'SVGStar',
         label: '星形',
         icon: 'kongwujiaoxing',
         propValue: '',
@@ -366,13 +366,13 @@ export const list: Listdata[] = [
           letterSpacing: 0,
           textAlign: 'center',
           color: '',
-          borderColor: '#000',
+          borderColor: '#409eff',
           backgroundColor: 'rgba(255, 255, 255, 1)',
         },
       },
       {
         id: '3-4',
-        component: markRaw(SVGTriangle),
+        component: 'SVGTriangle',
         label: '三角形',
         icon: 'xingzhuang-sanjiaoxing',
         propValue: '',
@@ -385,10 +385,48 @@ export const list: Listdata[] = [
           letterSpacing: 0,
           textAlign: 'center',
           color: '',
-          borderColor: '#000',
+          borderColor: '#409eff',
           backgroundColor: 'rgba(255, 255, 255, 1)',
         },
       },
     ],
   },
 ]
+export const getComponent = (com: string) => {
+  switch (com) {
+    case 'ButtonComponent':
+      return ButtonComponent
+    case 'Raster':
+      return Raster
+    case 'Table':
+      return Table
+    case 'Picture':
+      return Picture
+    case 'Switch':
+      return Switch
+    case 'SingleLineInput':
+      return SingleLineInput
+    case 'MultiLineInput':
+      return MultiLineInput
+    case 'DropDown':
+      return DropDown
+    case 'RadioBox':
+      return RadioBox
+    case 'MultiCheckBox':
+      return MultiCheckBox
+    case 'Grade':
+      return Grade
+    case 'RectShape':
+      return RectShape
+    case 'LineShape':
+      return LineShape
+    case 'CircleShape':
+      return CircleShape
+    case 'SVGStar':
+      return SVGStar
+    case 'SVGTriangle':
+      return SVGTriangle
+    case 'Text':
+      return Text
+  }
+}

@@ -3,7 +3,6 @@
     <el-checkbox v-model="checked1" label="Option 1" />
     <el-checkbox v-model="checked2" label="Option 2" />
     <el-checkbox v-model="checked3" label="Option 3" />
-
   </div>
 </template>
 

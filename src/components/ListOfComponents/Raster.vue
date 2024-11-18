@@ -1,14 +1,12 @@
 <template>
-  <div :style="customStyle">
-    <el-row h-full>
-      <el-col :span="12" border-dashed border-blue-200>
-        <slot>Column 1</slot>
-      </el-col>
-      <el-col :span="12" border-dashed border-blue-200>
-        <slot>Column 2</slot>
-      </el-col>
-    </el-row>
-  </div>
+  <el-row h-full :style="customStyle">
+    <el-col :span="12" border-dashed border-blue-200>
+      <slot>Column 1</slot>
+    </el-col>
+    <el-col :span="12" border-dashed border-blue-200>
+      <slot>Column 2</slot>
+    </el-col>
+  </el-row>
 </template>
 
 <script setup lang="ts">

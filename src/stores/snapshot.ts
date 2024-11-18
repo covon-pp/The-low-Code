@@ -1,29 +1,18 @@
-import { clonedComponents, selectedCom } from '@/stores/canvasData'
+import { clonedComponents } from '@/stores/canvasData'
 import { type Categorydata } from '@/components/ComponentList'
 import { type Ref } from 'vue'
 type State = {
   snapshotData: Ref<Categorydata[][]>
   snapshotIndex: number
-}
-function deepCopy(target) {
-  if (typeof target == 'object') {
-    const result = Array.isArray(target) ? [] : {}
-    for (const key in target) {
-      if (typeof target[key] == 'object') {
-        result[key] = deepCopy(target[key])
-      } else {
-        result[key] = target[key]
-      }
-    }
-
-    return result
-  }
-  return target
+  isRedo: Ref<boolean>
+  isUndo: Ref<boolean>
 }
 export default {
   state: {
     snapshotData: ref<Categorydata[][]>([]), // 编辑器快照数据
     snapshotIndex: -1, // 快照索引
+    isRedo: ref(false), //是否可撤销
+    isUndo: ref(false), //是否可恢复
   },
   mutations: {
     //撤销
@@ -31,39 +20,37 @@ export default {
       if (state.snapshotIndex < 0) return
       else if (state.snapshotIndex === 0) clonedComponents.value = []
       else
-        clonedComponents.value =
-          state.snapshotData.value[state.snapshotIndex - 1]
+        clonedComponents.value = JSON.parse(
+          JSON.stringify(state.snapshotData.value[state.snapshotIndex - 1]),
+        )
       state.snapshotIndex--
+      state.isUndo.value = true
+      state.isRedo.value = state.snapshotIndex != -1
       console.log('撤销')
-      console.log(state)
     },
     //恢复
     redo(state: State) {
       if (state.snapshotIndex < state.snapshotData.value.length - 1) {
         state.snapshotIndex++
-        clonedComponents.value = state.snapshotData.value[state.snapshotIndex]
+        clonedComponents.value = JSON.parse(
+          JSON.stringify(state.snapshotData.value[state.snapshotIndex]),
+        )
+        state.isRedo.value = true
+        state.isUndo.value =
+          state.snapshotData.value.length - 1 > state.snapshotIndex
         console.log('恢复')
-        console.log(state)
       }
     },
     //保存
     save(state: State) {
-      // 添加新的快照
-      if (
-        state.snapshotData.value.length > 0 &&
-        state.snapshotIndex < state.snapshotData.value.length - 1
-      )
-        state.snapshotData.value = state.snapshotData.value.splice(
-          0,
-          state.snapshotIndex + 1,
-        )
-      // const data = ref(deepCopy(clonedComponents.value))
-      // console.log(data === clonedComponents)
-      // state.snapshotData.value[state.snapshotIndex] = data.value
       state.snapshotIndex++
-      state.snapshotData.value[state.snapshotIndex] = clonedComponents.value
+      state.snapshotData.value.push(
+        JSON.parse(JSON.stringify(clonedComponents.value)),
+      )
       console.log('保存')
-      console.log(state.snapshotData)
+      state.isRedo.value = true
+      state.isUndo.value =
+        state.snapshotData.value.length - 1 > state.snapshotIndex
     },
   },
 }

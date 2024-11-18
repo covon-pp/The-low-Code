@@ -1,7 +1,5 @@
 <template>
-  <div :style="customStyle">
-    <el-text class="mx-1" type="primary">Primary</el-text>
-  </div>
+  <el-text class="mx-1" type="primary" :style="customStyle">Primary</el-text>
 </template>
 
 <script setup lang="ts">

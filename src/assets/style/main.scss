@@ -7,8 +7,10 @@
 }
 
 ::-webkit-scrollbar {
-  width: 5px; /* 纵向滚动条*/
-  height: 5px; /* 横向滚动条 */
+  width: 5px;
+  /* 纵向滚动条*/
+  height: 5px;
+  /* 横向滚动条 */
   background-color: #fff;
 }
 
@@ -24,31 +26,53 @@
 }
 
 .dragging-not-allowed {
-  cursor: no-drop; /* 禁止放置图标 */
+  cursor: no-drop;
+  /* 禁止放置图标 */
 }
+
 .ghost {
-  opacity: 0.5;
+  display: none;
+  display: inline-block;
+  // opacity: 0.5;
   background-color: #c8ebfb;
   // background: #c8ebfb;
 }
+
 /*工具栏*/
 .toolbar {
   padding: 0 18px;
   height: 60px;
-  &-christen {
-    button {
-      margin-left: 5px;
-      background-color: #fff;
-      border-radius: 4px;
-      border: none;
-      transition: all 0.3s;
-      & > svg {
-        padding: 4px 2px 0;
-        width: 20px;
-        height: 20px;
+
+  &-name {
+    width: 192px;
+
+    &__christen {
+      input {
+        height: 30px;
+        width: 155px;
+        font-size: 16px;
+        outline: none;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+        padding: 5px;
       }
-      &:hover {
-        background-color: #eee;
+
+      button {
+        margin-left: 5px;
+        background-color: #fff;
+        border-radius: 4px;
+        border: 1px solid #fff;
+        transition: all 0.3s;
+
+        &>svg {
+          padding: 4px 2px 0;
+          width: 22px;
+          height: 20px;
+        }
+
+        &:hover {
+          background-color: #eee;
+        }
       }
     }
   }
@@ -57,14 +81,17 @@
 /*主操作区*/
 .editor {
   height: calc(100% - 60px);
+
   &-fittings,
   &-control {
     width: 275px;
     background-color: #fff;
   }
+
   &-container {
     background-color: #f9fafb;
   }
+
   &-ctrbtn {
     position: absolute;
     top: 45%;
@@ -73,12 +100,15 @@
     background-color: #ffffff;
     border: none;
     cursor: pointer;
+
     &__left {
       border-radius: 0 10px 10px 0;
     }
+
     &__right {
       border-radius: 10px 0 0 10px;
     }
+
     .icon {
       display: inline-block;
       width: 16px;
@@ -92,18 +122,23 @@
   &-header {
     height: 32px;
   }
+
   &-main {
     height: 356px;
+
     &__datas {
       column-gap: 24px;
       row-gap: 24px;
     }
+
     &__subassembly {
       padding: 8px 0;
       border-bottom: 1px solid #ebeef5;
     }
+
     &__icon {
       border: 1px solid #eee;
+
       &:hover {
         background-color: #eee;
         border: 1px solid #409eff;
@@ -115,20 +150,24 @@
 /*画布区域*/
 .canvas {
   overflow: scroll;
+
   &-draw {
     min-width: 100%;
     min-height: 100%;
     width: 1200px;
     height: 900px;
+
     &__tip {
       top: 42%;
       left: 42%;
     }
+
     &__content {
       display: block;
       width: 1200px;
       height: 900px;
     }
+
     &__data {
       border: 1px solid transparent;
     }
@@ -138,12 +177,22 @@
 .control {
   &-header {
     height: 32px;
-    & > div {
+
+    &>div {
       cursor: pointer;
       padding: 0 6px;
     }
   }
+
   &-body {
     height: calc(100% - 32px);
+
+    &__attrs {
+      height: 100%;
+    }
+
+    &__attr {
+      height: 100%;
+    }
   }
 }
