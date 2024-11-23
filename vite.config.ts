@@ -24,6 +24,7 @@ export default defineConfig({
       presets: [presetAttributify(), presetUno()],
       rules: [
         ['bbc', { 'border-bottom': '1px solid #efefef' }],
+        ['bse', { border: '1px solid #eee' }],
         ['red', { color: 'red' }],
         //支持动态规则 m-1表示margin:10px
         [/^m-(\d+)$/, ([, d]) => ({ margin: `${Number(d) * 10}px` })],

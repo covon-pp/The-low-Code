@@ -24,6 +24,15 @@
 .left-leave-from,
 .right-enter-to,
 .right-leave-from {
-  width: 275px;
   opacity: 1;
+}
+
+.tip-enter-active,
+.tip-leave-active {
+  transition: opacity .3s;
+}
+
+.tip-enter,
+.tip-leave-to {
+  opacity: 0;
 }

@@ -15,32 +15,14 @@ import CircleShape from '@/components/ListOfComponents/CircleShape.vue'
 import SVGStar from '@/components/ListOfComponents/SVGStar.vue'
 import SVGTriangle from '@/components/ListOfComponents/SVGTriangle.vue'
 import Text from '@/components/ListOfComponents/Text.vue'
-export type Style = {
-  width: string
-  height: string
-  margin?: string
-  fontSize?: number
-  resize?: string
-  fontWeight?: number
-  lineHeight?: string
-  letterSpacing?: number
-  textAlign?: string
-  color?: string
-  padding?: number
-  backgroundColor?: string
-  borderRadius?: string
-  borderColor?: string
-  borderWidth?: number
-  borderStyle?: string
-  verticalAlign?: string
-}
+import { type MyAttr } from '@/components/Subassembly/Attr'
 export type Categorydata = {
   id: string
   component: string
   label: string
   propValue: object | string
   icon: string
-  style: Style
+  style: MyAttr
 }
 type Listdata = {
   id: string
@@ -59,15 +41,49 @@ export const list: Listdata[] = [
         propValue: '&nbsp;',
         icon: '#icon-zhagebuju',
         style: {
-          width: '690px',
-          height: '52px',
-          fontSize: 14,
-          fontWeight: 400,
-          lineHeight: '',
-          letterSpacing: 0,
-          textAlign: '',
-          color: '',
-          padding: 4,
+          layout: {
+            display: 'flex',
+            height: 52,
+            width: 690,
+            padding: {
+              paddingLeft: 0,
+              paddingRight: 0,
+              paddingTop: 0,
+              paddingBottom: 0,
+            },
+            margin: {
+              marginLeft: 0,
+              marginRight: 0,
+              marginTop: 0,
+              marginBottom: 0,
+            },
+          },
+          font: {
+            fontSize: 14,
+            fontWeight: 400,
+            fontColor: '#bbb',
+            textAlign: '',
+          },
+          background: {
+            backgroundStyle: 'color',
+            backgroundColor: '#fff',
+            backgroundOpacity: 1,
+          },
+          border: {
+            borderDirection: 'all',
+            borderStyle: {
+              borderWidth: 1,
+              borderColor: '#fff',
+              borderStyle: 'solid',
+            },
+          },
+          position: {
+            positionMethod: 'relactive',
+            positionLevel: 1,
+            float: false,
+            floatMethod: 'left',
+            clearFloat: false,
+          },
         },
       },
       {
@@ -84,13 +100,49 @@ export const list: Listdata[] = [
           thBold: true,
         },
         style: {
-          width: '600px',
-          height: '200px',
-          fontSize: 14,
-          fontWeight: 400,
-          textAlign: 'center',
-          color: '',
-          backgroundColor: 'rgba(255, 255, 255, 1)',
+          layout: {
+            display: 'inline-block',
+            height: 200,
+            width: 600,
+            padding: {
+              paddingLeft: 0,
+              paddingRight: 0,
+              paddingTop: 0,
+              paddingBottom: 0,
+            },
+            margin: {
+              marginLeft: 0,
+              marginRight: 0,
+              marginTop: 0,
+              marginBottom: 0,
+            },
+          },
+          font: {
+            fontSize: 14,
+            fontWeight: 400,
+            fontColor: '#bbb',
+            textAlign: '',
+          },
+          background: {
+            backgroundStyle: 'color',
+            backgroundColor: '#fff',
+            backgroundOpacity: 1,
+          },
+          border: {
+            borderDirection: 'all',
+            borderStyle: {
+              borderWidth: 1,
+              borderColor: '#fff',
+              borderStyle: 'solid',
+            },
+          },
+          position: {
+            positionMethod: 'relactive',
+            positionLevel: 1,
+            float: false,
+            floatMethod: 'left',
+            clearFloat: false,
+          },
         },
       },
     ],
@@ -106,15 +158,49 @@ export const list: Listdata[] = [
         icon: '#icon-text',
         propValue: '双击编辑文字',
         style: {
-          width: '200px',
-          height: '28px',
-          fontSize: 14,
-          fontWeight: 400,
-          lineHeight: '',
-          letterSpacing: 0,
-          textAlign: '',
-          color: '',
-          padding: 4,
+          layout: {
+            display: 'inline',
+            height: 28,
+            width: 200,
+            padding: {
+              paddingLeft: 0,
+              paddingRight: 0,
+              paddingTop: 0,
+              paddingBottom: 0,
+            },
+            margin: {
+              marginLeft: 0,
+              marginRight: 0,
+              marginTop: 0,
+              marginBottom: 0,
+            },
+          },
+          font: {
+            fontSize: 14,
+            fontWeight: 400,
+            fontColor: '#bbb',
+            textAlign: '',
+          },
+          background: {
+            backgroundStyle: 'color',
+            backgroundColor: '#fff',
+            backgroundOpacity: 1,
+          },
+          border: {
+            borderDirection: 'all',
+            borderStyle: {
+              borderWidth: 1,
+              borderColor: '#fff',
+              borderStyle: 'solid',
+            },
+          },
+          position: {
+            positionMethod: 'relactive',
+            positionLevel: 1,
+            float: false,
+            floatMethod: 'left',
+            clearFloat: false,
+          },
         },
       },
       {
@@ -124,9 +210,49 @@ export const list: Listdata[] = [
         icon: '#icon-tupian',
         propValue: '',
         style: {
-          width: '300px',
-          height: '300px',
-          borderRadius: '',
+          layout: {
+            display: 'inline-block',
+            height: 300,
+            width: 300,
+            padding: {
+              paddingLeft: 0,
+              paddingRight: 0,
+              paddingTop: 0,
+              paddingBottom: 0,
+            },
+            margin: {
+              marginLeft: 0,
+              marginRight: 0,
+              marginTop: 0,
+              marginBottom: 0,
+            },
+          },
+          font: {
+            fontSize: 14,
+            fontWeight: 400,
+            fontColor: '#bbb',
+            textAlign: '',
+          },
+          background: {
+            backgroundStyle: 'color',
+            backgroundColor: '#fff',
+            backgroundOpacity: 1,
+          },
+          border: {
+            borderDirection: 'all',
+            borderStyle: {
+              borderWidth: 1,
+              borderColor: '#fff',
+              borderStyle: 'solid',
+            },
+          },
+          position: {
+            positionMethod: 'relactive',
+            positionLevel: 1,
+            float: false,
+            floatMethod: 'left',
+            clearFloat: false,
+          },
         },
       },
       {
@@ -136,16 +262,49 @@ export const list: Listdata[] = [
         icon: '#icon-switch-ON',
         propValue: '',
         style: {
-          width: '80px',
-          height: '32px',
-          fontSize: 14,
-          fontWeight: 400,
-          lineHeight: '',
-          letterSpacing: 0,
-          textAlign: 'center',
-          color: '',
-          borderColor: '#409eff',
-          backgroundColor: 'rgba(255, 255, 255, 1)',
+          layout: {
+            display: 'inline',
+            height: 32,
+            width: 80,
+            padding: {
+              paddingLeft: 0,
+              paddingRight: 0,
+              paddingTop: 0,
+              paddingBottom: 0,
+            },
+            margin: {
+              marginLeft: 0,
+              marginRight: 0,
+              marginTop: 0,
+              marginBottom: 0,
+            },
+          },
+          font: {
+            fontSize: 14,
+            fontWeight: 400,
+            fontColor: '#bbb',
+            textAlign: '',
+          },
+          background: {
+            backgroundStyle: 'color',
+            backgroundColor: '#fff',
+            backgroundOpacity: 1,
+          },
+          border: {
+            borderDirection: 'all',
+            borderStyle: {
+              borderWidth: 1,
+              borderColor: '#fff',
+              borderStyle: 'solid',
+            },
+          },
+          position: {
+            positionMethod: 'relactive',
+            positionLevel: 1,
+            float: false,
+            floatMethod: 'left',
+            clearFloat: false,
+          },
         },
       },
       {
@@ -155,17 +314,49 @@ export const list: Listdata[] = [
         icon: '#icon-danhangshurukuang',
         propValue: '',
         style: {
-          width: '240px',
-          height: '32px',
-          margin: '10px',
-          fontSize: 14,
-          fontWeight: 400,
-          lineHeight: '',
-          letterSpacing: 0,
-          textAlign: 'center',
-          color: '',
-          borderColor: '#409eff',
-          backgroundColor: 'rgba(255, 255, 255, 1)',
+          layout: {
+            display: 'inline',
+            height: 32,
+            width: 240,
+            padding: {
+              paddingLeft: 0,
+              paddingRight: 0,
+              paddingTop: 0,
+              paddingBottom: 0,
+            },
+            margin: {
+              marginLeft: 10,
+              marginRight: 10,
+              marginTop: 10,
+              marginBottom: 10,
+            },
+          },
+          font: {
+            fontSize: 14,
+            fontWeight: 400,
+            fontColor: '#bbb',
+            textAlign: '',
+          },
+          background: {
+            backgroundStyle: 'color',
+            backgroundColor: '#fff',
+            backgroundOpacity: 1,
+          },
+          border: {
+            borderDirection: 'all',
+            borderStyle: {
+              borderWidth: 1,
+              borderColor: '#fff',
+              borderStyle: 'solid',
+            },
+          },
+          position: {
+            positionMethod: 'relactive',
+            positionLevel: 1,
+            float: false,
+            floatMethod: 'left',
+            clearFloat: false,
+          },
         },
       },
       {
@@ -175,18 +366,49 @@ export const list: Listdata[] = [
         icon: '#icon-duohangshuru',
         propValue: '',
         style: {
-          width: '660px',
-          height: '32px',
-          margin: '10px',
-          resize: 'none',
-          fontSize: 14,
-          fontWeight: 400,
-          lineHeight: '',
-          letterSpacing: 0,
-          textAlign: 'start',
-          color: '',
-          borderColor: '#409eff',
-          backgroundColor: 'rgba(255, 255, 255, 1)',
+          layout: {
+            display: 'inline',
+            height: 32,
+            width: 610,
+            padding: {
+              paddingLeft: 0,
+              paddingRight: 0,
+              paddingTop: 0,
+              paddingBottom: 0,
+            },
+            margin: {
+              marginLeft: 10,
+              marginRight: 10,
+              marginTop: 10,
+              marginBottom: 10,
+            },
+          },
+          font: {
+            fontSize: 14,
+            fontWeight: 400,
+            fontColor: '#bbb',
+            textAlign: '',
+          },
+          background: {
+            backgroundStyle: 'color',
+            backgroundColor: '#fff',
+            backgroundOpacity: 1,
+          },
+          border: {
+            borderDirection: 'all',
+            borderStyle: {
+              borderWidth: 1,
+              borderColor: '#fff',
+              borderStyle: 'solid',
+            },
+          },
+          position: {
+            positionMethod: 'relactive',
+            positionLevel: 1,
+            float: false,
+            floatMethod: 'left',
+            clearFloat: false,
+          },
         },
       },
       {
@@ -196,16 +418,49 @@ export const list: Listdata[] = [
         icon: '#icon-m-xialaxuanxiang',
         propValue: '',
         style: {
-          width: '150px',
-          height: '32px',
-          fontSize: 14,
-          fontWeight: 400,
-          lineHeight: '',
-          letterSpacing: 0,
-          textAlign: 'center',
-          color: '',
-          borderColor: '#409eff',
-          backgroundColor: 'rgba(255, 255, 255, 1)',
+          layout: {
+            display: 'inline',
+            height: 32,
+            width: 150,
+            padding: {
+              paddingLeft: 0,
+              paddingRight: 0,
+              paddingTop: 0,
+              paddingBottom: 0,
+            },
+            margin: {
+              marginLeft: 0,
+              marginRight: 0,
+              marginTop: 0,
+              marginBottom: 0,
+            },
+          },
+          font: {
+            fontSize: 14,
+            fontWeight: 400,
+            fontColor: '#bbb',
+            textAlign: 'center',
+          },
+          background: {
+            backgroundStyle: 'color',
+            backgroundColor: '#fff',
+            backgroundOpacity: 1,
+          },
+          border: {
+            borderDirection: 'all',
+            borderStyle: {
+              borderWidth: 1,
+              borderColor: '#fff',
+              borderStyle: 'solid',
+            },
+          },
+          position: {
+            positionMethod: 'relactive',
+            positionLevel: 1,
+            float: false,
+            floatMethod: 'left',
+            clearFloat: false,
+          },
         },
       },
       {
@@ -215,16 +470,49 @@ export const list: Listdata[] = [
         icon: '#icon-danxuanxuanzhong',
         propValue: '',
         style: {
-          width: '320px',
-          height: '32px',
-          fontSize: 14,
-          fontWeight: 400,
-          lineHeight: '',
-          letterSpacing: 0,
-          textAlign: 'center',
-          color: '',
-          borderColor: '#409eff',
-          backgroundColor: 'rgba(255, 255, 255, 1)',
+          layout: {
+            display: 'inline',
+            height: 32,
+            width: 320,
+            padding: {
+              paddingLeft: 0,
+              paddingRight: 0,
+              paddingTop: 0,
+              paddingBottom: 0,
+            },
+            margin: {
+              marginLeft: 0,
+              marginRight: 0,
+              marginTop: 0,
+              marginBottom: 0,
+            },
+          },
+          font: {
+            fontSize: 14,
+            fontWeight: 400,
+            fontColor: '#bbb',
+            textAlign: '',
+          },
+          background: {
+            backgroundStyle: 'color',
+            backgroundColor: '#fff',
+            backgroundOpacity: 1,
+          },
+          border: {
+            borderDirection: 'all',
+            borderStyle: {
+              borderWidth: 1,
+              borderColor: '#fff',
+              borderStyle: 'solid',
+            },
+          },
+          position: {
+            positionMethod: 'relactive',
+            positionLevel: 1,
+            float: false,
+            floatMethod: 'left',
+            clearFloat: false,
+          },
         },
       },
       {
@@ -234,16 +522,49 @@ export const list: Listdata[] = [
         icon: '#icon-duoxuankuang',
         propValue: '',
         style: {
-          width: '320px',
-          height: '32px',
-          fontSize: 14,
-          fontWeight: 400,
-          lineHeight: '',
-          letterSpacing: 0,
-          textAlign: 'center',
-          color: '',
-          borderColor: '#409eff',
-          backgroundColor: 'rgba(255, 255, 255, 1)',
+          layout: {
+            display: 'inline',
+            height: 32,
+            width: 320,
+            padding: {
+              paddingLeft: 0,
+              paddingRight: 0,
+              paddingTop: 0,
+              paddingBottom: 0,
+            },
+            margin: {
+              marginLeft: 0,
+              marginRight: 0,
+              marginTop: 0,
+              marginBottom: 0,
+            },
+          },
+          font: {
+            fontSize: 14,
+            fontWeight: 400,
+            fontColor: '#bbb',
+            textAlign: '',
+          },
+          background: {
+            backgroundStyle: 'color',
+            backgroundColor: '#fff',
+            backgroundOpacity: 1,
+          },
+          border: {
+            borderDirection: 'all',
+            borderStyle: {
+              borderWidth: 1,
+              borderColor: '#fff',
+              borderStyle: 'solid',
+            },
+          },
+          position: {
+            positionMethod: 'relactive',
+            positionLevel: 1,
+            float: false,
+            floatMethod: 'left',
+            clearFloat: false,
+          },
         },
       },
       {
@@ -253,16 +574,49 @@ export const list: Listdata[] = [
         icon: '#icon-dafen',
         propValue: '',
         style: {
-          width: '160px',
-          height: '32px',
-          fontSize: 14,
-          fontWeight: 400,
-          lineHeight: '',
-          letterSpacing: 0,
-          textAlign: 'center',
-          color: '',
-          borderColor: '#409eff',
-          backgroundColor: 'rgba(255, 255, 255, 1)',
+          layout: {
+            display: 'inline',
+            height: 32,
+            width: 320,
+            padding: {
+              paddingLeft: 0,
+              paddingRight: 0,
+              paddingTop: 0,
+              paddingBottom: 0,
+            },
+            margin: {
+              marginLeft: 0,
+              marginRight: 0,
+              marginTop: 0,
+              marginBottom: 0,
+            },
+          },
+          font: {
+            fontSize: 14,
+            fontWeight: 400,
+            fontColor: '#bbb',
+            textAlign: '',
+          },
+          background: {
+            backgroundStyle: 'color',
+            backgroundColor: '#fff',
+            backgroundOpacity: 1,
+          },
+          border: {
+            borderDirection: 'all',
+            borderStyle: {
+              borderWidth: 1,
+              borderColor: '#fff',
+              borderStyle: 'solid',
+            },
+          },
+          position: {
+            positionMethod: 'relactive',
+            positionLevel: 1,
+            float: false,
+            floatMethod: 'left',
+            clearFloat: false,
+          },
         },
       },
       {
@@ -272,19 +626,49 @@ export const list: Listdata[] = [
         propValue: '按钮',
         icon: '#icon-anniu',
         style: {
-          width: '75px',
-          height: '35px',
-          margin: '10px',
-          borderWidth: 1,
-          borderColor: '',
-          borderRadius: '10px',
-          fontSize: 14,
-          fontWeight: 400,
-          lineHeight: '',
-          letterSpacing: 0,
-          textAlign: '',
-          color: '',
-          backgroundColor: '',
+          layout: {
+            display: 'inline',
+            height: 32,
+            width: 68,
+            padding: {
+              paddingLeft: 0,
+              paddingRight: 0,
+              paddingTop: 0,
+              paddingBottom: 0,
+            },
+            margin: {
+              marginLeft: 0,
+              marginRight: 0,
+              marginTop: 0,
+              marginBottom: 0,
+            },
+          },
+          font: {
+            fontSize: 14,
+            fontWeight: 400,
+            fontColor: '#bbb',
+            textAlign: '',
+          },
+          background: {
+            backgroundStyle: 'color',
+            backgroundColor: '#fff',
+            backgroundOpacity: 1,
+          },
+          border: {
+            borderDirection: 'all',
+            borderStyle: {
+              borderWidth: 1,
+              borderColor: '#fff',
+              borderStyle: 'solid',
+            },
+          },
+          position: {
+            positionMethod: 'relactive',
+            positionLevel: 1,
+            float: false,
+            floatMethod: 'left',
+            clearFloat: false,
+          },
         },
       },
     ],
@@ -300,20 +684,49 @@ export const list: Listdata[] = [
         propValue: '&nbsp;',
         icon: 'juxing',
         style: {
-          width: '200px',
-          height: '200px',
-          fontSize: 14,
-          fontWeight: 400,
-          lineHeight: '',
-          letterSpacing: 0,
-          textAlign: 'center',
-          color: '',
-          borderColor: '#409eff',
-          borderWidth: 1,
-          backgroundColor: '',
-          borderStyle: 'solid',
-          borderRadius: '',
-          verticalAlign: 'middle',
+          layout: {
+            display: 'inline',
+            height: 32,
+            width: 320,
+            padding: {
+              paddingLeft: 0,
+              paddingRight: 0,
+              paddingTop: 0,
+              paddingBottom: 0,
+            },
+            margin: {
+              marginLeft: 0,
+              marginRight: 0,
+              marginTop: 0,
+              marginBottom: 0,
+            },
+          },
+          font: {
+            fontSize: 14,
+            fontWeight: 400,
+            fontColor: '#bbb',
+            textAlign: '',
+          },
+          background: {
+            backgroundStyle: 'color',
+            backgroundColor: '#fff',
+            backgroundOpacity: 1,
+          },
+          border: {
+            borderDirection: 'all',
+            borderStyle: {
+              borderWidth: 1,
+              borderColor: '#fff',
+              borderStyle: 'solid',
+            },
+          },
+          position: {
+            positionMethod: 'relactive',
+            positionLevel: 1,
+            float: false,
+            floatMethod: 'left',
+            clearFloat: false,
+          },
         },
       },
       {
@@ -323,9 +736,49 @@ export const list: Listdata[] = [
         propValue: '',
         icon: 'zhixian',
         style: {
-          width: '200px',
-          height: '2px',
-          backgroundColor: '#000',
+          layout: {
+            display: 'inline',
+            height: 32,
+            width: 320,
+            padding: {
+              paddingLeft: 0,
+              paddingRight: 0,
+              paddingTop: 0,
+              paddingBottom: 0,
+            },
+            margin: {
+              marginLeft: 0,
+              marginRight: 0,
+              marginTop: 0,
+              marginBottom: 0,
+            },
+          },
+          font: {
+            fontSize: 14,
+            fontWeight: 400,
+            fontColor: '#bbb',
+            textAlign: '',
+          },
+          background: {
+            backgroundStyle: 'color',
+            backgroundColor: '#fff',
+            backgroundOpacity: 1,
+          },
+          border: {
+            borderDirection: 'all',
+            borderStyle: {
+              borderWidth: 1,
+              borderColor: '#fff',
+              borderStyle: 'solid',
+            },
+          },
+          position: {
+            positionMethod: 'relactive',
+            positionLevel: 1,
+            float: false,
+            floatMethod: 'left',
+            clearFloat: false,
+          },
         },
       },
       {
@@ -335,20 +788,49 @@ export const list: Listdata[] = [
         propValue: '&nbsp;',
         icon: '24gl-circle',
         style: {
-          width: '200px',
-          height: '200px',
-          fontSize: 14,
-          fontWeight: 400,
-          lineHeight: '',
-          letterSpacing: 0,
-          textAlign: 'center',
-          color: '',
-          borderColor: '#409eff',
-          borderWidth: 1,
-          backgroundColor: '',
-          borderStyle: 'solid',
-          borderRadius: '',
-          verticalAlign: 'middle',
+          layout: {
+            display: 'inline',
+            height: 32,
+            width: 320,
+            padding: {
+              paddingLeft: 0,
+              paddingRight: 0,
+              paddingTop: 0,
+              paddingBottom: 0,
+            },
+            margin: {
+              marginLeft: 0,
+              marginRight: 0,
+              marginTop: 0,
+              marginBottom: 0,
+            },
+          },
+          font: {
+            fontSize: 14,
+            fontWeight: 400,
+            fontColor: '#bbb',
+            textAlign: '',
+          },
+          background: {
+            backgroundStyle: 'color',
+            backgroundColor: '#fff',
+            backgroundOpacity: 1,
+          },
+          border: {
+            borderDirection: 'all',
+            borderStyle: {
+              borderWidth: 1,
+              borderColor: '#fff',
+              borderStyle: 'solid',
+            },
+          },
+          position: {
+            positionMethod: 'relactive',
+            positionLevel: 1,
+            float: false,
+            floatMethod: 'left',
+            clearFloat: false,
+          },
         },
       },
       {
@@ -358,16 +840,49 @@ export const list: Listdata[] = [
         icon: 'kongwujiaoxing',
         propValue: '',
         style: {
-          width: '80px',
-          height: '80px',
-          fontSize: 14,
-          fontWeight: 400,
-          lineHeight: '',
-          letterSpacing: 0,
-          textAlign: 'center',
-          color: '',
-          borderColor: '#409eff',
-          backgroundColor: 'rgba(255, 255, 255, 1)',
+          layout: {
+            display: 'inline',
+            height: 32,
+            width: 320,
+            padding: {
+              paddingLeft: 0,
+              paddingRight: 0,
+              paddingTop: 0,
+              paddingBottom: 0,
+            },
+            margin: {
+              marginLeft: 0,
+              marginRight: 0,
+              marginTop: 0,
+              marginBottom: 0,
+            },
+          },
+          font: {
+            fontSize: 14,
+            fontWeight: 400,
+            fontColor: '#bbb',
+            textAlign: '',
+          },
+          background: {
+            backgroundStyle: 'color',
+            backgroundColor: '#fff',
+            backgroundOpacity: 1,
+          },
+          border: {
+            borderDirection: 'all',
+            borderStyle: {
+              borderWidth: 1,
+              borderColor: '#fff',
+              borderStyle: 'solid',
+            },
+          },
+          position: {
+            positionMethod: 'relactive',
+            positionLevel: 1,
+            float: false,
+            floatMethod: 'left',
+            clearFloat: false,
+          },
         },
       },
       {
@@ -377,16 +892,49 @@ export const list: Listdata[] = [
         icon: 'xingzhuang-sanjiaoxing',
         propValue: '',
         style: {
-          width: '80px',
-          height: '80px',
-          fontSize: 14,
-          fontWeight: 400,
-          lineHeight: '',
-          letterSpacing: 0,
-          textAlign: 'center',
-          color: '',
-          borderColor: '#409eff',
-          backgroundColor: 'rgba(255, 255, 255, 1)',
+          layout: {
+            display: 'inline',
+            height: 32,
+            width: 320,
+            padding: {
+              paddingLeft: 0,
+              paddingRight: 0,
+              paddingTop: 0,
+              paddingBottom: 0,
+            },
+            margin: {
+              marginLeft: 0,
+              marginRight: 0,
+              marginTop: 0,
+              marginBottom: 0,
+            },
+          },
+          font: {
+            fontSize: 14,
+            fontWeight: 400,
+            fontColor: '#bbb',
+            textAlign: '',
+          },
+          background: {
+            backgroundStyle: 'color',
+            backgroundColor: '#fff',
+            backgroundOpacity: 1,
+          },
+          border: {
+            borderDirection: 'all',
+            borderStyle: {
+              borderWidth: 1,
+              borderColor: '#fff',
+              borderStyle: 'solid',
+            },
+          },
+          position: {
+            positionMethod: 'relactive',
+            positionLevel: 1,
+            float: false,
+            floatMethod: 'left',
+            clearFloat: false,
+          },
         },
       },
     ],

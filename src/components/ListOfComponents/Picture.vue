@@ -1,5 +1,7 @@
 <template>
-  <div class="image-placeholder" :style="customStyle">
+  <div class="image-placeholder" :style="{
+    width: customStyle.layout.width + 'px', height: customStyle.layout.height + 'px'
+  }">
     <div class="image-placeholder__box w-full h-full flex justify-center justify-items-center flex-col items-center"
       ref="upload">
       <svg class=" icon w-6">
@@ -11,7 +13,8 @@
 </template>
 
 <script setup lang="ts">
-defineProps(['customStyle'])
+import { type MyAttr } from '../Subassembly/Attr';
+const { customStyle } = defineProps<{ customStyle: MyAttr }>()
 // const upload = ref()
 // const src = ref()
 // const uploadImage = (e: HTMLDivElement) => {

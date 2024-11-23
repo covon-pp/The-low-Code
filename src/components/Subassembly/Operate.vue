@@ -9,6 +9,7 @@
 
 <script setup lang="ts">
 import { delCom, moveUp, moveDown } from '@/assets/hooks/useOpera';
+import { selectedCom } from '@/stores/canvasData'
 const icons = ['#icon-shangyi', '#icon-xiayi', '#icon-shanchu']
 const { place } = defineProps(['place'])
 const moveEle = (index: number) => {
@@ -21,7 +22,8 @@ const moveEle = (index: number) => {
       moveDown(place)
       break
     case 2:
-      delCom()
+      if (selectedCom.value != place) selectedCom.value = place
+      else delCom()
       break
   }
 }

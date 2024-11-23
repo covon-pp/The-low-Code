@@ -1,46 +1,42 @@
 <template>
   <div class="control-body__attr" overflow-auto>
-    <el-collapse v-model="activeNames">
-      <el-collapse-item title="特有属性" name="1" px-4>
-        <div>
-          组件名：{{ showData?.label }}
-        </div>
-        <div>宽度：<input v-model="showData.style.width"></div>
-      </el-collapse-item>
-      <el-collapse-item :title="attList.layout.name" name="2" px-4>
-        <div>
-          组件名：{{ showData?.label }}
-        </div>
-      </el-collapse-item>
-      <el-collapse-item :title="attList.font.name" name="3" px-4>
-        <div>
-          组件名：{{ showData?.label }}
-        </div>
-      </el-collapse-item>
-      <el-collapse-item :title="attList.background.name" name="4" px-4>
-        <div>
-          组件名：{{ showData?.label }}
-        </div>
-      </el-collapse-item>
-      <el-collapse-item :title="attList.border.name" name="5" px-4>
-        <div>
-          组件名：{{ showData?.label }}
-        </div>
-      </el-collapse-item>
-      <el-collapse-item :title="attList.position.name" name="6" px-4>
-        <div>
-          组件名：{{ showData?.label }}
-        </div>
+    <el-collapse>
+      <el-collapse-item v-for="(title, index) in titles" :title="title" :name="index + 1" px-4 :key="index">
+        <component :is="mapping(title)">
+        </component>
       </el-collapse-item>
     </el-collapse>
   </div>
 </template>
 
 <script setup lang="ts">
-import { attList } from './Attr';
-import { type Categorydata } from '@/components/ComponentList';
-const { showData } = defineProps<{ showData: Categorydata | undefined }>()
-const activeNames = ref(['1'])
+import theLayout from '@/components/Subassembly/Layout.vue';
+import theFont from '@/components/Subassembly/Font.vue';
+import theBackground from '@/components/Subassembly/Background.vue';
+import theBorder from '@/components/Subassembly/Border.vue';
+import thePosition from '@/components/Subassembly/Position.vue';
+import Special from './Special.vue';
+const mapping = (data: string) => {
+  switch (data) {
+    case '特殊属性':
+      return Special
+    case '布局':
+      return theLayout
+    case '字体':
+      return theFont
+    case '背景':
+      return theBackground
+    case '边框':
+      return theBorder
+    case '位置':
+      return thePosition
+  }
+}
+const titles = ['特殊属性', '布局', '字体', '背景', '边框', '位置']
 </script>
 
-<style scoped></style>
+<style scoped>
+:deep(.el-collapse-item__content) {
+  padding-bottom: 0;
+}
+</style>

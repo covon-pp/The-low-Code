@@ -37,7 +37,8 @@
 </template>
 
 <script setup lang="ts">
-import { list, type Style } from './ComponentList'
+import { list } from './ComponentList'
+import { type MyAttr } from '@/components/Subassembly/Attr'
 import { type UseDraggableReturn, VueDraggable } from 'vue-draggable-plus'
 import { cloneId } from '@/stores/canvasData';
 const reactiveList = reactive(list)
@@ -51,7 +52,7 @@ type Categorydata = {
   label: string;
   propValue: object | string;
   icon: string;
-  style: Style;
+  style: MyAttr;
 }
 // const clone = (originalItem: Categorydata) => ({ ...originalItem });
 //为克隆后的组件修改编号
@@ -59,6 +60,8 @@ const clone = (originalItem: Categorydata) => {
   const item = Object.assign({}, originalItem)
   item.id = originalItem.id + '-clone-' + cloneId.value
   cloneId.value++
+  item.style = JSON.parse(JSON.stringify(item.style))
+  item.propValue = JSON.parse(JSON.stringify(item.propValue))
   return ({ ...item })
 }
 

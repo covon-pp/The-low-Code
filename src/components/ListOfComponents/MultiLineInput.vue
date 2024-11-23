@@ -1,13 +1,16 @@
 <template>
-  <div :style="customStyle" flex>
+  <div flex>
     <span>请输入：</span>
-    <textarea></textarea>
+    <textarea :style="{
+      width: customStyle.layout.width + 'px', height: customStyle.layout.height + 'px'
+    }"></textarea>
   </div>
 </template>
 
 <script setup lang="ts">
-const { customStyle } = defineProps(['customStyle'])
-const { resize } = customStyle
+import { type MyAttr } from '../Subassembly/Attr';
+const { customStyle } = defineProps<{ customStyle: MyAttr }>()
+// const { resize } = customStyle
 </script>
 
 <style scoped>
@@ -17,6 +20,6 @@ span {
 
 textarea {
   width: v-bind('customStyle.width');
-  resize: v-bind('resize');
+  /* resize: v-bind('resize'); */
 }
 </style>

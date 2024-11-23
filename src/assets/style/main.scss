@@ -21,6 +21,22 @@
   border-radius: 10px;
 }
 
+// 取消input的上下箭头
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+
+}
+
+input::-webkit-outer-spin-button {
+  -webkit-appearance: none !important;
+
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+
+}
+
 .draggable-root-div {
   display: contents;
 }
@@ -31,12 +47,18 @@
 }
 
 .ghost {
-  display: none;
   display: inline-block;
-  // opacity: 0.5;
-  background-color: #c8ebfb;
-  // background: #c8ebfb;
+  border: 2px dashed blue;
+  background-color: transparent;
+  pointer-events: none;
+  /* 防止干扰其他元素的事件 */
+  // display: none;
+  // display: inline-block;
+  // // opacity: 0.5;
+  // background-color: #c8ebfb;
+  // // background: #c8ebfb;
 }
+
 
 /*工具栏*/
 .toolbar {

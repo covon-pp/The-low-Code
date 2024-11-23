@@ -1,5 +1,7 @@
 <template>
-  <el-table :data="tableData" border style="width: 100%" :style="customStyle">
+  <el-table :data="tableData" border style="width: 100%" :style="{
+    width: customStyle.layout.width + 'px', height: customStyle.layout.height + 'px'
+  }">
     <el-table-column prop="date" label="Date" width="180" />
     <el-table-column prop="name" label="Name" width="180" />
     <el-table-column prop="address" label="Address" />
@@ -7,7 +9,8 @@
 </template>
 
 <script setup lang="ts">
-defineProps(['customStyle'])
+import { type MyAttr } from '../Subassembly/Attr';
+const { customStyle } = defineProps<{ customStyle: MyAttr }>()
 const tableData = [
   {
     date: '2016-05-03',
