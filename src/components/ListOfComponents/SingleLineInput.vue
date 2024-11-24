@@ -10,7 +10,10 @@
     marginRight: transformPX(margin.marginRight),
     marginBottom: transformPX(margin.marginBottom),
     marginLeft: transformPX(margin.marginLeft),
-    display: layout.display
+    display: layout.display,
+    borderWidth: transformPX(borderStyle.borderWidth),
+    borderStyle: borderStyle.borderStyle,
+    borderColor: borderStyle.borderColor
   }">
 </template>
 
@@ -20,6 +23,7 @@ import { transformPX } from '@/assets/hooks/useStyle';
 const { customStyle } = defineProps<{ customStyle: MyAttr }>()
 const { layout, font, background, border, position } = customStyle;
 const { padding, margin } = layout;
+const { borderStyle } = border
 </script>
 
 <style scoped></style>

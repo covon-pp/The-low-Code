@@ -6,7 +6,7 @@
         @update="onUpdate" @add="onAdd" @remove="remove" :sort="true">
         <div class="canvas-draw__tip absolute" v-if="clonedComponents?.length === 0">画布为空，可添加组件
         </div>
-        <component v-show="clonedComponents.length > 0" v-for="(data, index) in clonedComponents" :key="index"
+        <component v-show="clonedComponents.length > 0" v-for="(data, index) in clonedComponents" :key="data.id"
           class="canvas-draw__data cursor-move" :class="{ 'border-class': selectedCom === index }"
           @click="toggleBorderBorder(index)" :is="getComponent(data.component)" :customStyle="data.style" />
       </VueDraggable>
@@ -39,11 +39,24 @@ function remove() {
 const toggleBorderBorder = (index: number) => {
   selectedCom.value = index
 }
-
 </script>
 
 <style scoped>
 .border-class {
-  border: 1px solid #409eff;
+  /* 突出当前元素 */
+  background-color: #ecf5ff;
+}
+
+.ghost {
+  display: inline-block;
+  border: 2px dashed blue;
+  background-color: transparent;
+  pointer-events: none;
+  /* 防止干扰其他元素的事件 */
+  /* display: none;
+  display: inline-block;
+  opacity: 0.5;
+  background-color: #c8ebfb;
+  background: #c8ebfb; */
 }
 </style>

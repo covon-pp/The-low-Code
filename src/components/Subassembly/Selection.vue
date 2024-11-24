@@ -1,5 +1,5 @@
 <template>
-  <div flex items-center rounded-lg h-8 w-34 class="layout-selection">
+  <div flex items-center rounded-lg h-8 class="selection">
     <span flex items-center h-7 v-for="(icon, index) in icons" :key="index"
       :class="index == clickItem ? 'bgcWhite' : ''" @click="clickItem = index">
       <svg class="icon arr h-4 w-8" aria-hidden="true">
@@ -10,22 +10,22 @@
 </template>
 
 <script setup lang="ts">
-const { icons, updateDisplay, selectedDisplay } = defineProps<{
-  icons: { icon: string, display: string }[],
-  updateDisplay: (newDisplay: string) => void,
-  selectedDisplay: string
+const { icons, update, selected } = defineProps<{
+  icons: { icon: string, val: string }[],
+  update: (newData: any) => void,
+  selected: string
 }>()
 const clickItem = ref<number>(0)
-watchEffect(() => {
-  updateDisplay(icons[clickItem.value].display)
-})
 onBeforeUpdate(() => {
-  clickItem.value = icons.findIndex((item) => item.display === selectedDisplay)
+  clickItem.value = icons.findIndex((item) => item.val === selected)
+  watchEffect(() => {
+    update(icons[clickItem.value].val as string)
+  })
 })
 </script>
 
 <style scoped lang="scss">
-.layout-selection {
+.selection {
   padding: 2px;
   background-color: #f5f5f5;
 

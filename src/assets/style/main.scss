@@ -46,24 +46,10 @@ input[type="number"] {
   /* 禁止放置图标 */
 }
 
-.ghost {
-  display: inline-block;
-  border: 2px dashed blue;
-  background-color: transparent;
-  pointer-events: none;
-  /* 防止干扰其他元素的事件 */
-  // display: none;
-  // display: inline-block;
-  // // opacity: 0.5;
-  // background-color: #c8ebfb;
-  // // background: #c8ebfb;
-}
-
-
 /*工具栏*/
 .toolbar {
   padding: 0 18px;
-  height: 60px;
+  height: 56px;
 
   &-name {
     width: 192px;

@@ -1,15 +1,17 @@
 <template>
   <div text-sm leading-12>
-    <div flex items-center justify-between w-48 leading-8>Display：<DisplaySelection :icons="icons"
-        :updateDisplay="updateDisplay" :selectedDisplay="layout.display">
-      </DisplaySelection>
+    <div flex items-center justify-between w-full>
+      Display<Selection :icons="icons" :update="updateDisplay" :selected="layout.display">
+      </Selection>
     </div>
-    <div relative>宽×高：
-      <input type="number" v-model="layout.width" h-8 w-12 mx-2 bse rounded class="widhei">×
-      <input type="number" v-model="layout.height" h-8 w-12 ml-2 bse rounded class="widhei">
+    <div relative flex items-center justify-between w-full>宽×高
+      <div><input type="number" v-model="layout.width" h-8 w-19 bse rounded class="widhei"> × <input type="number"
+          v-model="layout.height" h-8 w-19 bse rounded class="widhei">
+      </div>
+
     </div>
-    <div class="layout-margin">外边距：
-      <SmallInput :tipData=tipData :move-x="moveX" :thePosition="thePosition" label="setMargin">
+    <div class="layout-margin" flex items-center justify-between w-full>外边距
+      <SmallInput :tipData=tipData :move-x="moveX" :thePosition="thePosition" label="setMargin" w-45>
         <input type="number" v-model="layout.margin.marginTop" class="setMargin"
           @mouseover="hoverEvent('上', 4, '.setMargin')" @mouseleave="cancelHover()">
         <input type="number" v-model="layout.margin.marginRight" class="setMargin"
@@ -20,8 +22,8 @@
           @mouseover="hoverEvent('左', 124, '.setMargin')" @mouseleave="cancelHover()">
       </SmallInput>
     </div>
-    <div class="layout-padding">内边距：
-      <SmallInput :tipData=tipData :move-x="moveX" :thePosition="thePosition" label="setPadding">
+    <div class="layout-padding" flex items-center justify-between w-full>内边距
+      <SmallInput :tipData=tipData :move-x="moveX" :thePosition="thePosition" label="setPadding" w-45>
         <input type="number" v-model="layout.padding.paddingTop" class="setPadding"
           @mouseover="hoverEvent('上', 4, '.setPadding')" @mouseleave="cancelHover()">
         <input type="number" v-model="layout.padding.paddingRight" class="setPadding"
@@ -38,11 +40,12 @@
 <script setup lang="ts">
 import { clonedComponents, selectedCom, showStyle } from '@/stores/canvasData';
 import SmallInput from '@/components/Subassembly/SmallInput.vue';
-import DisplaySelection from '@/components/Subassembly/DisplaySelection.vue';
+import Selection from '@/components/Subassembly/Selection.vue';
 import { danger } from '@/assets/hooks/useMessageTip'
 import type { Layout } from '@/components/Subassembly/Attr';
 const layout = ref<Layout>(showStyle.value?.layout as Layout)
-const icons = [{ icon: '#icon-buju', display: 'inline' }, { icon: '#icon-hengpai', display: 'inline-block' }, { icon: '#icon-kuaijibuju', display: 'block' }, { icon: '#icon-layout-row-line', display: 'flex' }, { icon: '#icon-bujushezhi', display: 'grid' }]
+// import state from '@/stores/snapshot'
+const icons = [{ icon: '#icon-buju', val: 'inline' }, { icon: '#icon-hengpai', val: 'inline-block' }, { icon: '#icon-kuaijibuju', val: 'block' }, { icon: '#icon-layout-row-line', val: 'flex' }, { icon: '#icon-bujushezhi', val: 'grid' }]
 const updateDisplay = (newDisplay: string) => {
   layout.value.display = newDisplay
 }
@@ -62,6 +65,10 @@ watch(() => selectedCom.value, () => {
   if (selectedCom.value != undefined && clonedComponents.value.length > 0)
     layout.value = clonedComponents.value[selectedCom.value].style.layout
 })
+// watchEffect(() => {
+//   if (selectedCom.value != undefined && clonedComponents.value[selectedCom.value].style)
+//     state.mutations.save(state.state)
+// })
 watchEffect(() => {
   if (layout.value.width < 0) { danger('宽度必须大于0'); layout.value.width = 0 }
   if (layout.value.height < 0) { danger('高度必须大于0'); layout.value.height = 0 }
@@ -88,8 +95,7 @@ watchEffect(() => {
 .setPadding {
   margin-left: 8px;
   height: 32px;
-  width: 32px;
-  padding-left: 2px;
+  width: 37px;
   border-radius: 4px;
   text-align: center;
   border: 1px solid #eee;

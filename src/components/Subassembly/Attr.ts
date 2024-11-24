@@ -15,45 +15,44 @@ type Layout = {
     marginBottom: number
   }
 }
-const getLayoutName = (name: string) => {
-  switch (name) {
-    case 'display':
-      return 'Display'
-    case 'height':
-      return '高度'
-    case 'width':
-      return '宽度'
-    case 'padding':
-      return '内边距'
-    case 'margin':
-      return '外边距'
-  }
-}
+type TextAlign = 'left' | 'right' | 'center' | 'justify'
 type Font = {
   fontSize: number
   fontWeight: number
   fontColor: string
-  textAlign: string
+  textAlign: TextAlign
 }
+type BackgroundStyle = 'image' | 'color'
+type BackgroundSize = 'contain' | 'cover' | 'auto'
+type BackgroundRepeat = 'repeat' | 'no-repeat' | 'repeat-x' | 'repeat-Y'
+type BackgroundPosition = 'top' | 'right' | 'bottom' | 'left'
 type Background = {
-  backgroundStyle: string
-  backgroundColor: string
+  backgroundStyle: BackgroundStyle
   backgroundOpacity: number
+  backgroundColor?: string
+  backgroundImage?: string
+  backgroundSize?: BackgroundSize
+  backgroundRepeat?: BackgroundRepeat
+  backgroundPosition?: BackgroundPosition
 }
+type BorderStyle = 'none' | 'dotted' | 'dashed' | 'solid' | 'double'
 type Border = {
   borderDirection: string
   borderStyle: {
     borderWidth: number
     borderColor: string
-    borderStyle: string
+    borderStyle: BorderStyle
   }
+  borderRadio: number
 }
+type PositionMethod = 'static' | 'relative' | 'absolute' | 'fixed' | 'sticky'
+type Float = 'left' | 'right' | 'none'
+type ClearFloat = 'none' | 'both' | 'left' | 'right'
 type Position = {
-  positionMethod: string
+  positionMethod: PositionMethod
   positionLevel: number
-  float: boolean
-  floatMethod: string
-  clearFloat: boolean
+  float: Float
+  clearFloat: ClearFloat
 }
 type MyAttr = {
   layout: Layout
@@ -84,7 +83,7 @@ const attList: MyAttr = {
     fontSize: 14,
     fontWeight: 500,
     fontColor: 'black',
-    textAlign: '',
+    textAlign: 'center',
   },
   background: {
     backgroundStyle: 'color',
@@ -98,13 +97,13 @@ const attList: MyAttr = {
       borderColor: '#fff',
       borderStyle: 'solid',
     },
+    borderRadio: 0,
   },
   position: {
-    positionMethod: 'relactive',
+    positionMethod: 'relative',
     positionLevel: 1,
-    float: false,
-    floatMethod: 'left',
-    clearFloat: false,
+    float: 'left',
+    clearFloat: 'none',
   },
 }
 export {
@@ -114,6 +113,7 @@ export {
   type Position,
   type Border,
   type MyAttr,
+  type TextAlign,
+  type BorderStyle,
   attList,
-  getLayoutName,
 }
