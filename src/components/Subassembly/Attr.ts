@@ -17,23 +17,15 @@ type Layout = {
 }
 type TextAlign = 'left' | 'right' | 'center' | 'justify'
 type Font = {
+  propValue: object | string
   fontSize: number
   fontWeight: number
   fontColor: string
   textAlign: TextAlign
 }
-type BackgroundStyle = 'image' | 'color'
-type BackgroundSize = 'contain' | 'cover' | 'auto'
-type BackgroundRepeat = 'repeat' | 'no-repeat' | 'repeat-x' | 'repeat-Y'
-type BackgroundPosition = 'top' | 'right' | 'bottom' | 'left'
 type Background = {
-  backgroundStyle: BackgroundStyle
   backgroundOpacity: number
-  backgroundColor?: string
-  backgroundImage?: string
-  backgroundSize?: BackgroundSize
-  backgroundRepeat?: BackgroundRepeat
-  backgroundPosition?: BackgroundPosition
+  backgroundColor: string
 }
 type BorderStyle = 'none' | 'dotted' | 'dashed' | 'solid' | 'double'
 type Border = {
@@ -51,6 +43,12 @@ type ClearFloat = 'none' | 'both' | 'left' | 'right'
 type Position = {
   positionMethod: PositionMethod
   positionLevel: number
+  position: {
+    top: number
+    right: number
+    bottom: number
+    left: number
+  }
   float: Float
   clearFloat: ClearFloat
 }
@@ -61,51 +59,6 @@ type MyAttr = {
   border: Border
   position: Position
 }
-const attList: MyAttr = {
-  layout: {
-    display: 'block',
-    width: 0,
-    height: 0,
-    padding: {
-      paddingLeft: 0,
-      paddingRight: 0,
-      paddingTop: 0,
-      paddingBottom: 0,
-    },
-    margin: {
-      marginLeft: 0,
-      marginRight: 0,
-      marginTop: 0,
-      marginBottom: 0,
-    },
-  },
-  font: {
-    fontSize: 14,
-    fontWeight: 500,
-    fontColor: 'black',
-    textAlign: 'center',
-  },
-  background: {
-    backgroundStyle: 'color',
-    backgroundColor: '#fff',
-    backgroundOpacity: 1,
-  },
-  border: {
-    borderDirection: 'all',
-    borderStyle: {
-      borderWidth: 1,
-      borderColor: '#fff',
-      borderStyle: 'solid',
-    },
-    borderRadio: 0,
-  },
-  position: {
-    positionMethod: 'relative',
-    positionLevel: 1,
-    float: 'left',
-    clearFloat: 'none',
-  },
-}
 export {
   type Layout,
   type Background,
@@ -115,5 +68,7 @@ export {
   type MyAttr,
   type TextAlign,
   type BorderStyle,
-  attList,
+  type PositionMethod,
+  type Float,
+  type ClearFloat,
 }

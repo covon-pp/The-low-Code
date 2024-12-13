@@ -1,5 +1,5 @@
 <template>
-  <button round :style="{
+  <button :style="{
     width: transformPX(layout.width),
     height: transformPX(layout.height),
     paddingTop: transformPX(padding.paddingTop),
@@ -19,8 +19,17 @@
     textAlign: font.textAlign,
     fontWeight: font.fontWeight,
     fontSize: transformPX(font.fontSize),
-    zIndex: position.positionLevel
-  }">按钮</button>
+    backgroundColor: background.backgroundColor,
+    opacity: background.backgroundOpacity,
+    position: position.positionMethod,
+    top: transformPX(position.position.top),
+    right: transformPX(position.position.right),
+    bottom: transformPX(position.position.bottom),
+    left: transformPX(position.position.left),
+    float: position.float,
+    clear: position.clearFloat,
+    zIndex: position.positionLevel,
+  }"><span>按钮</span></button>
 </template>
 
 <script setup lang="ts">
@@ -30,11 +39,7 @@ const { customStyle } = defineProps<{ customStyle: MyAttr }>()
 const { layout, font, background, border, position } = customStyle;
 const { padding, margin } = layout;
 const { borderStyle } = border
-if (background.backgroundStyle === 'image') {
 
-} else {
-
-}
 //border边框位置
 const borderDirection = ref<string>('none')
 watchEffect(() => {

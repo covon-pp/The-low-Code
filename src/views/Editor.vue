@@ -2,7 +2,7 @@
   <div class="main" w-screen h-screen>
     <!--顶部工具栏-->
     <Toolbar></Toolbar>
-    <!-- 此处应有预览区域 -->
+    <!-- 预览区域 -->
 
     <!--主要操作区域-->
     <div class="editor" flex justify-between relative>

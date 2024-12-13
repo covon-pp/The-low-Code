@@ -9,18 +9,17 @@ import DropDown from '@/components/ListOfComponents/DropDown.vue'
 import RadioBox from '@/components/ListOfComponents/RadioBox.vue'
 import MultiCheckBox from '@/components/ListOfComponents/MultiCheckBox.vue'
 import Grade from '@/components/ListOfComponents/Grade.vue'
-import RectShape from '@/components/ListOfComponents/RectShape.vue'
-import LineShape from '@/components/ListOfComponents/LineShape.vue'
-import CircleShape from '@/components/ListOfComponents/CircleShape.vue'
-import SVGStar from '@/components/ListOfComponents/SVGStar.vue'
-import SVGTriangle from '@/components/ListOfComponents/SVGTriangle.vue'
 import Text from '@/components/ListOfComponents/Text.vue'
+import Avatar from '@/components/ListOfComponents/Avatar.vue'
+import Marquee from '@/components/ListOfComponents/Marquee.vue'
+import Card from '@/components/ListOfComponents/Card.vue'
 import { type MyAttr } from '@/components/Subassembly/Attr'
 export type Categorydata = {
   id: string
   component: string
+  allowChild: boolean
+  children?: Categorydata | string
   label: string
-  propValue: object | string
   icon: string
   style: MyAttr
 }
@@ -37,14 +36,15 @@ export const list: Listdata[] = [
       {
         id: '1-1',
         component: 'Raster',
+        allowChild: true,
+        children: '请添加组件',
         label: '栅格',
-        propValue: '&nbsp;',
         icon: '#icon-zhagebuju',
         style: {
           layout: {
             display: 'flex',
             height: 52,
-            width: 690,
+            width: 685,
             padding: {
               paddingLeft: 0,
               paddingRight: 0,
@@ -59,13 +59,13 @@ export const list: Listdata[] = [
             },
           },
           font: {
+            propValue: '',
             fontSize: 14,
             fontWeight: 400,
             fontColor: '#bbb',
             textAlign: 'center',
           },
           background: {
-            backgroundStyle: 'color',
             backgroundColor: '#fff',
             backgroundOpacity: 1,
           },
@@ -80,65 +80,12 @@ export const list: Listdata[] = [
           },
           position: {
             positionMethod: 'relative',
-            positionLevel: 1,
-            float: 'none',
-            clearFloat: 'none',
-          },
-        },
-      },
-      {
-        id: '1-2',
-        component: 'Table',
-        label: '表格',
-        icon: '#icon-biaoge',
-        propValue: {
-          data: [
-            ['表头1', '表头2', '表头3'],
-            ['内容1', '内容2', '内容3'],
-          ],
-          stripe: true,
-          thBold: true,
-        },
-        style: {
-          layout: {
-            display: 'inline-block',
-            height: 200,
-            width: 600,
-            padding: {
-              paddingLeft: 0,
-              paddingRight: 0,
-              paddingTop: 0,
-              paddingBottom: 0,
+            position: {
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
             },
-            margin: {
-              marginLeft: 0,
-              marginRight: 0,
-              marginTop: 0,
-              marginBottom: 0,
-            },
-          },
-          font: {
-            fontSize: 14,
-            fontWeight: 400,
-            fontColor: '#bbb',
-            textAlign: 'center',
-          },
-          background: {
-            backgroundStyle: 'color',
-            backgroundColor: '#fff',
-            backgroundOpacity: 1,
-          },
-          border: {
-            borderDirection: 'all',
-            borderStyle: {
-              borderWidth: 1,
-              borderColor: '#fff',
-              borderStyle: 'none',
-            },
-            borderRadio: 0,
-          },
-          position: {
-            positionMethod: 'relative',
             positionLevel: 1,
             float: 'none',
             clearFloat: 'none',
@@ -154,9 +101,9 @@ export const list: Listdata[] = [
       {
         id: '2-1',
         component: 'Text',
+        allowChild: false,
         label: '文字',
         icon: '#icon-text',
-        propValue: '双击编辑文字',
         style: {
           layout: {
             display: 'inline',
@@ -176,13 +123,13 @@ export const list: Listdata[] = [
             },
           },
           font: {
+            propValue: '双击编辑文字',
             fontSize: 14,
             fontWeight: 400,
             fontColor: '#bbb',
             textAlign: 'center',
           },
           background: {
-            backgroundStyle: 'color',
             backgroundColor: '#fff',
             backgroundOpacity: 1,
           },
@@ -197,6 +144,12 @@ export const list: Listdata[] = [
           },
           position: {
             positionMethod: 'relative',
+            position: {
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+            },
             positionLevel: 1,
 
             float: 'none',
@@ -207,9 +160,9 @@ export const list: Listdata[] = [
       {
         id: '2-2',
         component: 'Picture',
+        allowChild: false,
         label: '图片',
         icon: '#icon-tupian',
-        propValue: '',
         style: {
           layout: {
             display: 'inline-block',
@@ -229,13 +182,13 @@ export const list: Listdata[] = [
             },
           },
           font: {
+            propValue: '',
             fontSize: 14,
             fontWeight: 400,
             fontColor: '#bbb',
             textAlign: 'center',
           },
           background: {
-            backgroundStyle: 'color',
             backgroundColor: '#fff',
             backgroundOpacity: 1,
           },
@@ -250,6 +203,12 @@ export const list: Listdata[] = [
           },
           position: {
             positionMethod: 'relative',
+            position: {
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+            },
             positionLevel: 1,
 
             float: 'none',
@@ -261,8 +220,8 @@ export const list: Listdata[] = [
         id: '2-3',
         component: 'Switch',
         label: '开关',
+        allowChild: false,
         icon: '#icon-switch-ON',
-        propValue: '',
         style: {
           layout: {
             display: 'inline',
@@ -282,13 +241,13 @@ export const list: Listdata[] = [
             },
           },
           font: {
+            propValue: '',
             fontSize: 14,
             fontWeight: 400,
             fontColor: '#bbb',
             textAlign: 'center',
           },
           background: {
-            backgroundStyle: 'color',
             backgroundColor: '#fff',
             backgroundOpacity: 1,
           },
@@ -303,6 +262,12 @@ export const list: Listdata[] = [
           },
           position: {
             positionMethod: 'relative',
+            position: {
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+            },
             positionLevel: 1,
 
             float: 'none',
@@ -314,8 +279,8 @@ export const list: Listdata[] = [
         id: '2-4',
         component: 'SingleLineInput',
         label: '单行输入',
+        allowChild: false,
         icon: '#icon-danhangshurukuang',
-        propValue: '',
         style: {
           layout: {
             display: 'inline',
@@ -335,13 +300,13 @@ export const list: Listdata[] = [
             },
           },
           font: {
+            propValue: '',
             fontSize: 14,
             fontWeight: 400,
             fontColor: '#bbb',
             textAlign: 'center',
           },
           background: {
-            backgroundStyle: 'color',
             backgroundColor: '#fff',
             backgroundOpacity: 1,
           },
@@ -356,6 +321,12 @@ export const list: Listdata[] = [
           },
           position: {
             positionMethod: 'relative',
+            position: {
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+            },
             positionLevel: 1,
 
             float: 'none',
@@ -367,8 +338,8 @@ export const list: Listdata[] = [
         id: '2-5',
         component: 'MultiLineInput',
         label: '多行输入',
+        allowChild: false,
         icon: '#icon-duohangshuru',
-        propValue: '',
         style: {
           layout: {
             display: 'inline',
@@ -388,13 +359,13 @@ export const list: Listdata[] = [
             },
           },
           font: {
+            propValue: '',
             fontSize: 14,
             fontWeight: 400,
             fontColor: '#bbb',
             textAlign: 'center',
           },
           background: {
-            backgroundStyle: 'color',
             backgroundColor: '#fff',
             backgroundOpacity: 1,
           },
@@ -409,6 +380,12 @@ export const list: Listdata[] = [
           },
           position: {
             positionMethod: 'relative',
+            position: {
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+            },
             positionLevel: 1,
 
             float: 'none',
@@ -420,13 +397,13 @@ export const list: Listdata[] = [
         id: '2-6',
         component: 'DropDown',
         label: '下拉框',
+        allowChild: false,
         icon: '#icon-m-xialaxuanxiang',
-        propValue: '',
         style: {
           layout: {
-            display: 'inline',
+            display: 'block',
             height: 32,
-            width: 150,
+            width: 152,
             padding: {
               paddingLeft: 0,
               paddingRight: 0,
@@ -441,14 +418,14 @@ export const list: Listdata[] = [
             },
           },
           font: {
+            propValue: 'drop down',
             fontSize: 14,
             fontWeight: 400,
             fontColor: '#bbb',
             textAlign: 'center',
           },
           background: {
-            backgroundStyle: 'color',
-            backgroundColor: '#fff',
+            backgroundColor: '#409eff',
             backgroundOpacity: 1,
           },
           border: {
@@ -462,8 +439,13 @@ export const list: Listdata[] = [
           },
           position: {
             positionMethod: 'relative',
+            position: {
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+            },
             positionLevel: 1,
-
             float: 'none',
             clearFloat: 'none',
           },
@@ -473,8 +455,8 @@ export const list: Listdata[] = [
         id: '2-7',
         component: 'RadioBox',
         label: '单选框',
+        allowChild: false,
         icon: '#icon-danxuanxuanzhong',
-        propValue: '',
         style: {
           layout: {
             display: 'inline',
@@ -494,13 +476,13 @@ export const list: Listdata[] = [
             },
           },
           font: {
+            propValue: '',
             fontSize: 14,
             fontWeight: 400,
             fontColor: '#bbb',
             textAlign: 'center',
           },
           background: {
-            backgroundStyle: 'color',
             backgroundColor: '#fff',
             backgroundOpacity: 1,
           },
@@ -515,6 +497,12 @@ export const list: Listdata[] = [
           },
           position: {
             positionMethod: 'relative',
+            position: {
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+            },
             positionLevel: 1,
 
             float: 'none',
@@ -526,8 +514,8 @@ export const list: Listdata[] = [
         id: '2-8',
         component: 'MultiCheckBox',
         label: '多选框',
+        allowChild: false,
         icon: '#icon-duoxuankuang',
-        propValue: '',
         style: {
           layout: {
             display: 'inline',
@@ -547,13 +535,13 @@ export const list: Listdata[] = [
             },
           },
           font: {
+            propValue: '',
             fontSize: 14,
             fontWeight: 400,
             fontColor: '#bbb',
             textAlign: 'center',
           },
           background: {
-            backgroundStyle: 'color',
             backgroundColor: '#fff',
             backgroundOpacity: 1,
           },
@@ -568,6 +556,12 @@ export const list: Listdata[] = [
           },
           position: {
             positionMethod: 'relative',
+            position: {
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+            },
             positionLevel: 1,
 
             float: 'none',
@@ -579,8 +573,8 @@ export const list: Listdata[] = [
         id: '2-9',
         component: 'Grade',
         label: '打分',
+        allowChild: false,
         icon: '#icon-dafen',
-        propValue: '',
         style: {
           layout: {
             display: 'inline',
@@ -600,13 +594,13 @@ export const list: Listdata[] = [
             },
           },
           font: {
+            propValue: '',
             fontSize: 14,
             fontWeight: 400,
             fontColor: '#bbb',
             textAlign: 'center',
           },
           background: {
-            backgroundStyle: 'color',
             backgroundColor: '#fff',
             backgroundOpacity: 1,
           },
@@ -621,6 +615,12 @@ export const list: Listdata[] = [
           },
           position: {
             positionMethod: 'relative',
+            position: {
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+            },
             positionLevel: 1,
 
             float: 'none',
@@ -632,7 +632,7 @@ export const list: Listdata[] = [
         id: '2-10',
         component: 'ButtonComponent',
         label: '按钮',
-        propValue: '按钮',
+        allowChild: false,
         icon: '#icon-anniu',
         style: {
           layout: {
@@ -653,13 +653,13 @@ export const list: Listdata[] = [
             },
           },
           font: {
+            propValue: '按钮',
             fontSize: 14,
             fontWeight: 400,
             fontColor: '#bbb',
             textAlign: 'center',
           },
           background: {
-            backgroundStyle: 'color',
             backgroundColor: '#fff',
             backgroundOpacity: 1,
           },
@@ -674,6 +674,12 @@ export const list: Listdata[] = [
           },
           position: {
             positionMethod: 'relative',
+            position: {
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+            },
             positionLevel: 1,
 
             float: 'none',
@@ -685,14 +691,14 @@ export const list: Listdata[] = [
   },
   {
     id: '3',
-    category: '形状',
+    category: '数据展示',
     categorydata: [
       {
         id: '3-1',
-        component: 'RectShape',
-        label: '矩形',
-        propValue: '&nbsp;',
-        icon: 'juxing',
+        component: 'Avatar',
+        label: '头像',
+        allowChild: false,
+        icon: 'icon-touxiang',
         style: {
           layout: {
             display: 'inline',
@@ -712,13 +718,13 @@ export const list: Listdata[] = [
             },
           },
           font: {
+            propValue: '',
             fontSize: 14,
             fontWeight: 400,
             fontColor: '#bbb',
             textAlign: 'center',
           },
           background: {
-            backgroundStyle: 'color',
             backgroundColor: '#fff',
             backgroundOpacity: 1,
           },
@@ -733,8 +739,13 @@ export const list: Listdata[] = [
           },
           position: {
             positionMethod: 'relative',
+            position: {
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+            },
             positionLevel: 1,
-
             float: 'none',
             clearFloat: 'none',
           },
@@ -742,10 +753,10 @@ export const list: Listdata[] = [
       },
       {
         id: '3-2',
-        component: 'LineShape',
-        label: '直线',
-        propValue: '',
-        icon: 'zhixian',
+        component: 'Card',
+        label: '卡片',
+        allowChild: true,
+        icon: 'icon-preview',
         style: {
           layout: {
             display: 'inline',
@@ -765,13 +776,13 @@ export const list: Listdata[] = [
             },
           },
           font: {
+            propValue: '',
             fontSize: 14,
             fontWeight: 400,
             fontColor: '#bbb',
             textAlign: 'center',
           },
           background: {
-            backgroundStyle: 'color',
             backgroundColor: '#fff',
             backgroundOpacity: 1,
           },
@@ -786,59 +797,12 @@ export const list: Listdata[] = [
           },
           position: {
             positionMethod: 'relative',
-            positionLevel: 1,
-
-            float: 'none',
-            clearFloat: 'none',
-          },
-        },
-      },
-      {
-        id: '3-2',
-        component: 'CircleShape',
-        label: '圆形',
-        propValue: '&nbsp;',
-        icon: '24gl-circle',
-        style: {
-          layout: {
-            display: 'inline',
-            height: 32,
-            width: 320,
-            padding: {
-              paddingLeft: 0,
-              paddingRight: 0,
-              paddingTop: 0,
-              paddingBottom: 0,
+            position: {
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
             },
-            margin: {
-              marginLeft: 0,
-              marginRight: 0,
-              marginTop: 0,
-              marginBottom: 0,
-            },
-          },
-          font: {
-            fontSize: 14,
-            fontWeight: 400,
-            fontColor: '#bbb',
-            textAlign: 'center',
-          },
-          background: {
-            backgroundStyle: 'color',
-            backgroundColor: '#fff',
-            backgroundOpacity: 1,
-          },
-          border: {
-            borderDirection: 'all',
-            borderStyle: {
-              borderWidth: 1,
-              borderColor: '#fff',
-              borderStyle: 'none',
-            },
-            borderRadio: 0,
-          },
-          position: {
-            positionMethod: 'relative',
             positionLevel: 1,
 
             float: 'none',
@@ -848,10 +812,10 @@ export const list: Listdata[] = [
       },
       {
         id: '3-3',
-        component: 'SVGStar',
-        label: '星形',
-        icon: 'kongwujiaoxing',
-        propValue: '',
+        component: 'Marquee',
+        label: '走马灯',
+        allowChild: false,
+        icon: 'icon-zoumadeng',
         style: {
           layout: {
             display: 'inline',
@@ -871,13 +835,13 @@ export const list: Listdata[] = [
             },
           },
           font: {
+            propValue: '',
             fontSize: 14,
             fontWeight: 400,
             fontColor: '#bbb',
             textAlign: 'center',
           },
           background: {
-            backgroundStyle: 'color',
             backgroundColor: '#fff',
             backgroundOpacity: 1,
           },
@@ -892,7 +856,14 @@ export const list: Listdata[] = [
           },
           position: {
             positionMethod: 'relative',
+            position: {
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+            },
             positionLevel: 1,
+
             float: 'none',
             clearFloat: 'none',
           },
@@ -900,15 +871,16 @@ export const list: Listdata[] = [
       },
       {
         id: '3-4',
-        component: 'SVGTriangle',
-        label: '三角形',
-        icon: 'xingzhuang-sanjiaoxing',
-        propValue: '',
+        component: 'Table',
+        allowChild: true,
+        children: '请添加数据',
+        label: '表格',
+        icon: '#icon-biaoge',
         style: {
           layout: {
-            display: 'inline',
-            height: 32,
-            width: 320,
+            display: 'inline-block',
+            height: 200,
+            width: 600,
             padding: {
               paddingLeft: 0,
               paddingRight: 0,
@@ -923,13 +895,20 @@ export const list: Listdata[] = [
             },
           },
           font: {
+            propValue: {
+              data: [
+                ['表头1', '表头2', '表头3'],
+                ['内容1', '内容2', '内容3'],
+              ],
+              stripe: true,
+              thBold: true,
+            },
             fontSize: 14,
             fontWeight: 400,
             fontColor: '#bbb',
             textAlign: 'center',
           },
           background: {
-            backgroundStyle: 'color',
             backgroundColor: '#fff',
             backgroundOpacity: 1,
           },
@@ -944,8 +923,13 @@ export const list: Listdata[] = [
           },
           position: {
             positionMethod: 'relative',
+            position: {
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+            },
             positionLevel: 1,
-
             float: 'none',
             clearFloat: 'none',
           },
@@ -978,17 +962,13 @@ export const getComponent = (com: string) => {
       return MultiCheckBox
     case 'Grade':
       return Grade
-    case 'RectShape':
-      return RectShape
-    case 'LineShape':
-      return LineShape
-    case 'CircleShape':
-      return CircleShape
-    case 'SVGStar':
-      return SVGStar
-    case 'SVGTriangle':
-      return SVGTriangle
     case 'Text':
       return Text
+    case 'Avatar':
+      return Avatar
+    case 'Card':
+      return Card
+    case 'Marquee':
+      return Marquee
   }
 }

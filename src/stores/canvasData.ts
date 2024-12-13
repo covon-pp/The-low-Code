@@ -6,6 +6,8 @@ export const clonedComponents = ref<Categorydata[]>([])
 export const cloneId = ref<number>(1)
 //当前选择的组件在数组的位置
 export const selectedCom = ref<number>()
+//当前选择的组件的id
+export const selectedId = ref<string>()
 //获取选择的组件样式
 export const showStyle = ref<MyAttr>()
 watchEffect(() => {

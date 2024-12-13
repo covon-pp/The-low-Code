@@ -8,7 +8,6 @@
       <div><input type="number" v-model="layout.width" h-8 w-19 bse rounded class="widhei"> × <input type="number"
           v-model="layout.height" h-8 w-19 bse rounded class="widhei">
       </div>
-
     </div>
     <div class="layout-margin" flex items-center justify-between w-full>外边距
       <SmallInput :tipData=tipData :move-x="moveX" :thePosition="thePosition" label="setMargin" w-45>

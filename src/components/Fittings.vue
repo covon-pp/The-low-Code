@@ -15,21 +15,18 @@
         </div>
         <div class="fittings-main__datas overflow-hidden grid grid-cols-3 justify-items-center"
           v-if="!arrowhead[index].isFold">
-          <VueDraggable ref="el" v-model="data.categorydata" ghostClass="ghost" :animation="150"
-            class="draggable-root-div" :group="{ name: 'component', pull: 'clone', put: false }" :clone="clone"
-            :sort="false">
-            <div class="fittings-main__data" :key="index" v-for="(ele, index) in data.categorydata"
-              :data-type="ele.component">
-              <div class="flex flex-col items-center w-16">
-                <div class="fittings-main__icon w-12 h-12 rounded flex items-center justify-center cursor-move">
-                  <svg class="icon" aria-hidden="true" w-5 h-5>
-                    <use :xlink:href='ele.icon'></use>
-                  </svg>
-                </div>
-                <div class="fittings-main__msg pt-1 cursor-move">{{ ele.label }}</div>
+          <div class="fittings-main__data" :key="index" v-for="(ele, index) in data.categorydata"
+            :data-type="ele.component">
+            <div class="flex flex-col items-center w-16" draggable="true"
+              @dragstart="handleDragStart($event, data.id, ele.id)">
+              <div class="fittings-main__icon w-12 h-12 rounded flex items-center justify-center cursor-move">
+                <svg class="icon" aria-hidden="true" w-5 h-5>
+                  <use :xlink:href='ele.icon'></use>
+                </svg>
               </div>
+              <div class="fittings-main__msg pt-1 cursor-move">{{ ele.label }}</div>
             </div>
-          </VueDraggable>
+          </div>
         </div>
       </div>
     </div>
@@ -38,33 +35,14 @@
 
 <script setup lang="ts">
 import { list } from './ComponentList'
-import { type MyAttr } from '@/components/Subassembly/Attr'
-import { type UseDraggableReturn, VueDraggable } from 'vue-draggable-plus'
-import { cloneId } from '@/stores/canvasData';
 const reactiveList = reactive(list)
-const el = ref<UseDraggableReturn>()
 type Arr = {
   index: number, isFold: boolean, rotate: string, height: string
 }
-type Categorydata = {
-  id: string;
-  component: ReturnType<typeof markRaw>;
-  label: string;
-  propValue: object | string;
-  icon: string;
-  style: MyAttr;
+function handleDragStart(e: DragEvent, id: string, subId: string) {
+  e.dataTransfer?.setData('id', id);
+  e.dataTransfer?.setData('subId', subId);
 }
-// const clone = (originalItem: Categorydata) => ({ ...originalItem });
-//为克隆后的组件修改编号
-const clone = (originalItem: Categorydata) => {
-  const item = Object.assign({}, originalItem)
-  item.id = originalItem.id + '-clone-' + cloneId.value
-  cloneId.value++
-  item.style = JSON.parse(JSON.stringify(item.style))
-  item.propValue = JSON.parse(JSON.stringify(item.propValue))
-  return ({ ...item })
-}
-
 const arrowhead = ref<Arr[]>([
   {
     index: 0,

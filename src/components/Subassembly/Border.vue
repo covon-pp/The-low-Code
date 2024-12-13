@@ -21,8 +21,9 @@
 <script setup lang="ts">
 import { showStyle } from '@/stores/canvasData';
 import Selection from '@/components/Subassembly/Selection.vue';
-import dropDownList from '@/components/Subassembly/dropDownList.vue';
+import dropDownList from '@/components/Subassembly/DropDownList.vue';
 import type { Border, BorderStyle } from '@/components/Subassembly/Attr';
+import { danger } from '@/assets/hooks/useMessageTip'
 import { selectedCom, clonedComponents } from '@/stores/canvasData';
 const border = ref<Border>(showStyle.value?.border as Border)
 const icons = [{ icon: '#icon-square_24', val: 'all' }, { icon: '#icon-shangbiankuang', val: 'top' }, { icon: '#icon-youbiankuang', val: 'right' }, { icon: '#icon-xiabiankuang', val: 'bottom' }, { icon: '#icon-zuobiankuang', val: 'left' },]
@@ -37,6 +38,10 @@ const styleList: string[] = ['solid', 'dashed', 'double', 'dotted', 'none']
 watch(() => selectedCom.value, () => {
   if (selectedCom.value != undefined && clonedComponents.value.length > 0)
     border.value = clonedComponents.value[selectedCom.value].style.border
+})
+watchEffect(() => {
+  if (border.value.borderStyle.borderWidth < 0) { danger('边框宽度必须大于0'); border.value.borderStyle.borderWidth = 0 }
+  if (border.value.borderRadio < 0) { danger('边框圆角必须大于0'); border.value.borderRadio = 0 }
 })
 </script>
 

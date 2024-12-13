@@ -17,10 +17,11 @@
 <script setup lang="ts">
 import { showStyle } from '@/stores/canvasData';
 import Selection from '@/components/Subassembly/Selection.vue';
-import dropDownList from '@/components/Subassembly/dropDownList.vue';
+import dropDownList from '@/components/Subassembly/DropDownList.vue';
 import type { Font, TextAlign } from './Attr';
 import { getNumbers } from '@/assets/hooks/useStyle';
 import { selectedCom, clonedComponents } from '@/stores/canvasData';
+import { danger } from '@/assets/hooks/useMessageTip'
 const font = ref<Font>(showStyle.value?.font as Font)
 const icons = [{ icon: '#icon-zuoduiqi', val: 'left' }, { icon: '#icon-juzhongduiqi', val: 'center' }, { icon: '#icon-youduiqi', val: 'right' }, { icon: '#icon-zuoyouduiqi', val: 'justify' },]
 const updateTextAlign = (newTextAlign: TextAlign) => {
@@ -33,6 +34,9 @@ const closeList = (data: string) => {
 watch(() => selectedCom.value, () => {
   if (selectedCom.value != undefined && clonedComponents.value.length > 0)
     font.value = clonedComponents.value[selectedCom.value].style.font
+})
+watchEffect(() => {
+  if (font.value.fontSize < 0) { danger('字体大小必须大于0'); font.value.fontSize = 0 }
 })
 </script>
 
